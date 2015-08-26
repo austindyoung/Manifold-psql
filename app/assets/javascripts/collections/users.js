@@ -2,9 +2,10 @@ Manifold.Collections.Users = Backbone.Collection.extend({
   url: "/api/users",
   model: Manifold.Models.User,
   filter: function (prefix) {
+    prefix = prefix.toLowerCase();
     var regex = "^" + prefix
     return this.select(function (model) {
-      return model.attributes.fname.match(regex) || model.attributes.mname.match(regex) || model.attributes.lname.match(regex);
+      return model.attributes.fname.toLowerCase().match(regex) || model.attributes.mname.toLowerCase().match(regex) || model.attributes.lname.toLowerCase().match(regex);
     });
   },
 

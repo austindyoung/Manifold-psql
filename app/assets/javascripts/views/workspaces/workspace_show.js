@@ -38,8 +38,10 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       this.renderProjects();
       // this.renderProjectForm();
       // this.renderMembers();
-      this.$('#projects-sidebar').sortable();
-      this.$('#members').sortable();
+      this.$('#projects-sidebar');
+      // remove sortable
+      this.$('#members');
+      // remove sortable
 
       return this;
     },

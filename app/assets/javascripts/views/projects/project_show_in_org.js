@@ -77,8 +77,10 @@ Manifold.Views.ProjectShowInOrg = Backbone.CompositeView.extend({
       // this.renderTasks();
       // this.renderTeamMembers();
       this.renderOverviewForm();
-      this.$('#tasks').sortable();
-      this.$('#team-members').sortable();
+      this.$('#tasks');
+      // remove sortable
+      this.$('#team-members');
+      // remove sortable
       this.renderAddModal();
       return this;
     },

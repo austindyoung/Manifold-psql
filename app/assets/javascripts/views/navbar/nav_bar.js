@@ -46,7 +46,8 @@ Manifold.Views.NavBar = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
-    this.$('#search-results-list').sortable();
+    this.$('#search-results-list')
+    // remove sortable
     return this;
   }
 });

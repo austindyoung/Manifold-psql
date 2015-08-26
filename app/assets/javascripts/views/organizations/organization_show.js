@@ -32,7 +32,8 @@ Manifold.Views.OrganizationShow = Backbone.CompositeView.extend({
       });
       this.$el.html(content);
       this.attachSubviews();
-      this.$('#projects').sortable();
+      this.$('#projects');
+      // remove sortable
       return this;
     },
 

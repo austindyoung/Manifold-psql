@@ -1,9 +1,9 @@
 Manifold.Views.OrganizationsIndex = Backbone.View.extend({
   template: JST['organizations/index_navbar'],
 
-  // events: {
-  //   "click create-organization": "creatOrganization"
-  // },
+  events: {
+    "click .create-org": "createOrganization"
+  },
 
   tagName: "ul",
 
@@ -18,6 +18,10 @@ Manifold.Views.OrganizationsIndex = Backbone.View.extend({
   // creatOrganization: function () {
   //   var org = new Manifold.Models.Organization({})
   // },
+
+  createOrganization: function () {
+    console.log("create");
+  },
 
   render: function () {
     var content = this.template({

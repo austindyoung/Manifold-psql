@@ -13,8 +13,8 @@ class Api::OrganizationsController < ApplicationController
 
   def index
     if params[:search]
-    #   @organizations = Organization.search(params[:search])
-      @organizations = Organization.all
+      @organizations = Organization.search(params[:search])
+      # @organizations = Organization.all
     else
       @organizations = Organization.all.select {|org| org.is_member?(current_user)}
       render :index

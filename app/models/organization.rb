@@ -27,11 +27,8 @@ class Organization < ActiveRecord::Base
   )
 
   def self.search(fragment)
-    fragment = fragment.downcase
-    regex = '^#{fragment}[a-z]*|[a-z]* #{fragment}'
-    regex = '^m'
-    query = 'title REGEXP ' + '\"' + regex + '\"'
-    Organization.where(query)
+
+    Organization.where("title ~* ?", "^#{fragment}[a-zA-Z]*|[a-zA-Z]* #{fragment}")
   end
 
   def is_member?(user)
