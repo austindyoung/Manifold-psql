@@ -1,0 +1,174 @@
+// .project-top-nav {
+//   position: relative;
+//   margin: 0;
+//   padding: 0;
+//   background: gray;
+//   // width: 68%;
+//   // border-left: 1px solid #ccc;
+//   // border-right: 1px solid #ccc;
+//   // border-bottom: 1px solid #ccc;
+//   width: 60%;
+//   margin-left: 230px;
+// }
+
+// .content {
+//   position: relative;
+//   margin: 0 auto;
+//   background: #fff;
+//   width: 900px;
+//   border-left: 1px solid #ccc;
+//   border-right: 1px solid #ccc;
+//   border-bottom: 1px solid #ccc;
+// }
+//
+// .content:before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 240px;
+//   width: 1px;
+//   background: #ccc;
+// }
+.form {
+  width: 350px;
+  // D4D4D4
+  border: 2px solid #DFE8E4;
+  border-radius: 3px;
+  padding: 5px;
+  background: #DFE6E8;
+}
+#project-sidebar-heading {
+  display: inline-block;
+  margin: 0px;
+  width: 100px;
+  border-bottom: 1px solid gray;
+}
+
+.sidebar-header-item {
+  width: 10px;
+  margin: 3px;
+  padding: 0px;
+}
+
+.btn.btn-default.project {
+  background: #DFE8E4;
+  width: 100%;
+}
+
+.btn.btn-default.task-side {
+  background: #DFE6E8;
+  width: 100%;
+}
+
+.btn.btn-default.task-main-form {
+  background: #DFE6E8;
+  width: 100%;
+}
+
+// #members {
+//   top: 7px;
+// }
+
+.ws-header{
+  height: 10px;
+}
+
+.task-item {
+  text-align: left;
+  margin: 4px;
+  width: 150px;
+  padding: 3px;
+  border-bottom: 1px solid #CDCED1;
+  font-size: 80%;
+}
+
+.task-item:hover {
+  background: #DFE6E8;
+  border-radius: 3px;
+  text-align: left;
+  margin: 4px;
+  width: 150px;
+  padding: 3px;
+  border-top: 1px solid #CDCED1;
+  font-size: 80%;
+}
+
+.task-item.active {
+  background: #DFE6E8;
+  border-radius: 3px;
+  text-align: left;
+  margin: 4px;
+  width: 150px;
+  padding: 3px;
+  border: 1px solid #CDCED1;
+  font-size: 90%;
+}
+.project-heading {
+  text-align: left;
+  // float: left;
+  font-size: 75%;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.project-heading:hover {
+  text-align: left;
+  // float: left;
+  border-left: 1px solid gray;
+
+  font-size: 75%;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.project-heading.active {
+  text-align: left;
+  // float: left;
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
+  font-weight: 100%;
+  font-size: 75%;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.member-heading  {
+  float: left;
+  // width: 200px;
+  // min-height: 200px;
+   padding: 5px;
+}
+
+.project-tasks {
+  float: left;
+  // A7C9C1
+  background: #DFE8E4;
+  width: 250px;
+  min-height: 200px;
+  padding: 20px;
+  border: 2px;
+  border-radius: 3px;
+  border: 1px solid #DFE6E8;
+}
+
+.form-group-side {
+  width: 350px;
+  // D4D4D4
+  height: 216px;
+  border: 2px solid #DFE6E8;
+  border-radius: 3px;
+  padding: 5px;
+  background: #DFE8E4;
+}
+
+#project-overview {
+  padding: 20px;
+  float: right;
+  margin-left: 0px;
+}

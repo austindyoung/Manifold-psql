@@ -1,0 +1,93 @@
+// #workspaces {
+//   display: inline-block;
+// }
+
+// #workspaces {
+//   height: 500px;
+//   padding: 10px;
+//
+// }
+.navbar.navbar-default.project h2 {
+  text-align: center;
+}
+
+.workspace-heading {
+  width: 200px;
+  padding: 10px;
+  height: 200px;
+  border: 1px solid #B9C7C1;
+  margin: 25px;
+  border-radius: 3px;
+  display: inline-block;
+  background: #DFE6E8;
+}
+
+.workspace-item {
+  padding: 0px;
+  margin: 0px;
+  border-radius: 5px;
+}
+
+
+// .user {
+//   display: inline-block;
+//   width: 45px;
+//   height: 45px;
+//   padding: 3px;
+//   border: 3px solid navy;
+//   margin: 0px;
+// }
+
+.ws-title {
+  padding: 10px;
+}
+
+.ws-title h3 {
+  text-align: center;
+  top: 3px;
+}
+
+#workspaces {
+
+}
+
+.project-show {
+  float: right;
+  width: 1000px;
+}
+
+.workspace-heading:hover{
+  background: #DFE8E4;
+  border: 1px dashed #B9C7C1;
+}
+
+
+.navbar.navbar-default.project {
+  bottom-margin: 1px;
+  border: 1px solid #C3D7DE;
+}
+
+#project {
+  float: left;
+  left-margin: 100px;
+  width: 700px;
+  right-margin: 3px;
+}
+
+// .project-heading {
+//   display: inline-block;
+//   border: 1px solid gray;
+//   margin: 0px;
+// }
+
+#projects-sidebar {
+  background: #E4EBED;
+  float: left;
+  right-margin: 10px;
+  width: 150px;
+  height: 500px;
+  padding: 3px;
+  border: 1px solid gray;
+  margin: 0px;
+  border-radius: 2px;
+}

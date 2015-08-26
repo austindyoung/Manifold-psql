@@ -1,0 +1,18 @@
+<!-- <%= member.escape("email") %> -->
+<!-- <%= member.escape("img_url")%> -->
+
+<div class="user-item" data-url="<%= member.escape("img_url")%>">
+  <%= member.escape("fname")[0].toUpperCase() +  member.escape("lname")[0].toUpperCase()%>
+</div>
+
+
+<!-- <button type="button" class="btn btn-default member-heading" data-member-id="<%= member.id %>"><%= member.escape("email") %></button> -->
+
+<!-- <li class="member-heading" data-member-id="<%= member.id %>">
+  <a href="#/users/<%= member.id %>">
+    <span class='shadow'></span>
+    <span class='details'>
+      <%= member.escape("email") %>
+    </span>
+  </a>
+</li> -->
