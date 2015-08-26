@@ -37,6 +37,7 @@ Manifold.Views.AddUserForm = Backbone.View.extend({
       adder_id: parseInt(Manifold.CURRENT_USER.id),
       organization_id: organization_id
     })
+    alert("A request has been sent")
     this.model.save()
     notification.save();
     this.remove();
