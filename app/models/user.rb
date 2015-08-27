@@ -116,6 +116,12 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :all_projects,
+    through: :organizations,
+    source: :projects
+  )
+
   def self.search(fragment)
     fragment = fragment.downcase
     (User.where("fname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}") + User.where("mname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}") + User.where("lname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}")).uniq

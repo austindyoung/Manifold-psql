@@ -16,6 +16,7 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       var all_projects = new Manifold.Collections.Projects();
       all_projects.fetch({data: {all: "t"}});
       var searchModal = new Manifold.Views.ProjectSearchModal({
+        model: this.model,
         collection: all_projects
       });
       $('body').append(searchModal.render().$el);

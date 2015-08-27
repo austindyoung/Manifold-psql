@@ -14,8 +14,12 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_user.projects
-    render :index
+    if params[:all]
+      @projects = current_user.all_projects
+    else
+      @projects = current_user.projects
+      render :index
+    end
   end
 
   def update

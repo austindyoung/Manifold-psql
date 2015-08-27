@@ -1,4 +1,4 @@
-Manifold.Views.UserToProjectForm = Backbone.View.extend({
+Manifold.Views.ProjectSearchModal = Backbone.View.extend({
   events: {
     // 'submit form': 'renderSelectUserModal',
     "input input[type=text]": 'attachResults',
@@ -8,8 +8,8 @@ Manifold.Views.UserToProjectForm = Backbone.View.extend({
 
   template: JST['add_forms/project_search_modal'],
 
-  initialize: function (options) {
-    this.users = options.users;
+  initialize: function () {
+
   },
 
   removeForm: function () {
@@ -46,25 +46,12 @@ Manifold.Views.UserToProjectForm = Backbone.View.extend({
     event.preventDefault();
     var fragment = $(event.target).serializeJSON().fragment;
 
-    var resultsArray = this.users.filter(fragment);
-    modal = new Manifold.Views.SelectUserForm({
+    var resultsArray = this.collection.filter(fragment);
+    modal = new Manifold.Views.SelectProjectForm({
       model: this.model,
       resultsArray: resultsArray
     });
     $('#results').append(modal.render().$el);
-  },
-
-  renderSelectUserModal: function (event) {
-    event.preventDefault();
-      var fragment = $(event.target).serializeJSON().fragment;
-      this.remove();
-      var resultsArray = this.users.filter(fragment);
-      modal = new Manifold.Views.SelectUserForm({
-        model: this.model,
-        resultsArray: resultsArray
-      });
-      $('body').append(modal.$el);
-      modal.render();
-  },
+  }
 
 });
