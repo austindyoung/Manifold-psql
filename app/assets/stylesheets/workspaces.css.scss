@@ -20,13 +20,14 @@
   border-radius: 3px;
   display: inline-block;
   background: #DFE6E8;
+  cursor: pointer;
 }
 
-.workspace-item {
-  padding: 0px;
-  margin: 0px;
-  border-radius: 5px;
-}
+// .workspace-item {
+//   padding: 0px;
+//   margin: 0px;
+//   border-radius: 5px;
+// }
 
 
 // .user {
@@ -49,6 +50,11 @@
 
 #workspaces {
 
+}
+
+.create-workspace:hover {
+  color: green;
+  font-weight: 1500;
 }
 
 .project-show {

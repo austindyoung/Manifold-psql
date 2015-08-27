@@ -8,7 +8,7 @@ Manifold.Views.WorkspaceIndexItem = Backbone.CompositeView.extend({
 
     template: JST['workspaces/index_item'],
 
-    className: 'ws-item',
+    className: 'workspace-heading',
 
     initialize: function () {
       // this.collection = this.model.tasks();
@@ -22,6 +22,7 @@ Manifold.Views.WorkspaceIndexItem = Backbone.CompositeView.extend({
         workspace: this.model
       });
       this.$el.html(content);
+      this.$el.data("id", this.model.id);
       this.attachSubviews();
       this.renderMembers();
       return this;

@@ -5,7 +5,7 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
 
   events: {
     "click .create-workspace": "renderWorkspaceModal",
-    "click .workspace-item": "navToWorkspace"
+    "click .workspace-heading": "navToWorkspace"
   },
 
   navToWorkspace: function (event) {
@@ -17,7 +17,9 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
     $('body').css('background-color', 'rgb(240,240,240) ')
     this.renderWorkspaceForm();
     this.listenTo(this.collection, 'add', this.addWorkspace);
+    // debugger;
     this.renderWorkspaces();
+    // debugger;
   },
 
   renderWorkspaceModal: function () {
@@ -35,10 +37,14 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
     var view = new Manifold.Views.WorkspaceIndexItem({
       model: workspace
     });
+    // debugger;
     this.addSubview('#workspaces', view);
   },
 
   renderWorkspaces: function () {
+    // var button = new Manifold.Views.WorkspaceAddButton();
+    // debugger;
+
     this.collection.each(this.addWorkspace.bind(this));
   },
 
@@ -57,7 +63,7 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
     var content = this.template({
       workspaces: this.collection
     });
-
+    // debugger;
     this.$el.html(content);
     this.attachSubviews();
     this.$('#projects');

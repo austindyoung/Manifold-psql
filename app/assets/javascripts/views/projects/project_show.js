@@ -12,8 +12,15 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       "click .edit-task": "log"
     },
 
-    log: function () {
+    log: function (event) {
+      // debugger;
       console.log("here");
+      var data = $('.task-completed').parent().data();
+      var task_id = data.id;
+      var attrs = {title: data.heading, description: data.desc};
+      var task = new Manifold.Models.Task({id: task_id});
+      task.fetch();
+      task.save(attrs, {patch: true});
     },
 
     deleteTask: function (event) {
