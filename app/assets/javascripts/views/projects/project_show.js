@@ -8,22 +8,28 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       "click .task-item": "renderTaskDetails",
       "click .navbar-header.project": "renderOverviewForm",
       'click .workspace-item': 'addToWorkspace',
-      'click .task-completed': 'deleteTask'
+      'click .task-completed': 'deleteTask',
+      'add': "log"
     },
 
+    log: function () {
+      console.log("here");
+    },
 
     deleteTask: function (event) {
       var task_id = parseInt($(event.target).data().id);
       var task = new Manifold.Models.Task({id: task_id});
       task.fetch();
       this.confirmDeletion(task)
+
       // task.destroy();
 
     },
 
     confirmDeletion: function (task) {
       var view = new Manifold.Views.CompletionModal({
-        model: task
+        model: task,
+        $task: $(event.target).parent()
       });
       $('body').append(view.render().el);
     },
@@ -62,10 +68,10 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       $('.workspaces-dropdown').append(modal.render().$el);
     },
 
-    renderTaskModal: function () {
-      console.log("task modal");
-
-    },
+    // renderTaskModal: function () {
+    //   console.log("task modal");
+    //
+    // },
 
     renderAddUserModal: function () {
       modal = new Manifold.Views.UserToProjectForm({

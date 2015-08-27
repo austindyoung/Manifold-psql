@@ -11,7 +11,8 @@ Manifold.Views.CompletionModal = Backbone.View.extend({
 
   template: JST['tasks/completion_modal'],
 
-  initialize: function() {
+  initialize: function(options) {
+    this.$task = options.$task;
     // this.model = options.model;
     // this.collection = options.collection;
     // this.parentDiv = options.parentDiv;
@@ -28,5 +29,6 @@ Manifold.Views.CompletionModal = Backbone.View.extend({
   deleteTask: function () {
     this.model.destroy();
     this.remove();
+    this.$task.remove();
   }
 });

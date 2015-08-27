@@ -2,8 +2,8 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
     template: JST['workspaces/show'],
 
     events: {
-      "click .project-heading": "renderProject"
-      // "click .project-to-ws": "renderProjectSearchModal",
+      "click .project-heading": "renderProject",
+      "click .project-to-ws": "renderProjectSearchModal",
     },
 
     renderProjectSearchModal: function () {

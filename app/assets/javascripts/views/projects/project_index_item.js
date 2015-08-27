@@ -8,6 +8,8 @@ Manifold.Views.ProjectIndexItem = Backbone.CompositeView.extend(
   //     subviewContainer: '.project-tasks'
   //   },
 
+  className: "project-heading",
+
     events: {
       'sortreceive': 'receiveTask',
       'sortremove': 'removeTask',
@@ -16,7 +18,7 @@ Manifold.Views.ProjectIndexItem = Backbone.CompositeView.extend(
 
     template: JST['projects/index_item'],
 
-    className: 'project-display',
+    // className: 'project-display',
 
     initialize: function () {
       this.collection = this.model.tasks();
@@ -63,6 +65,7 @@ Manifold.Views.ProjectIndexItem = Backbone.CompositeView.extend(
         project: this.model
       });
       this.$el.html(content);
+      this.$el.data("project-id", this.model.id);
       // this.$el.data('project-id', this.model.id);
       //
       // this.renderTasks();
