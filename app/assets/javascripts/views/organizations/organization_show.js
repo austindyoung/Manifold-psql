@@ -19,7 +19,9 @@ Manifold.Views.OrganizationShow = Backbone.CompositeView.extend({
     },
 
     navToProject: function (event) {
-      event.preventDefault();
+      // event.preventDefault();
+      debugger;
+
       var $target = $(event.target);
       var project_id = $target.data().projectId;
       var url = "#/projects/" + project_id;

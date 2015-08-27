@@ -65,6 +65,7 @@ Manifold.Views.ProjectIndexItem = Backbone.CompositeView.extend(
         project: this.model
       });
       this.$el.html(content);
+
       this.$el.data("project-id", this.model.id);
       // this.$el.data('project-id', this.model.id);
       //

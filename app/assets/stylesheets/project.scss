@@ -76,6 +76,7 @@
 }
 
 .task-item {
+  cursor: pointer;
   text-align: left;
   margin: 4px;
   width: 150px;
@@ -110,8 +111,13 @@
   top: 20px;
 }
 
+.navbar-brand {
+  cursor: pointer;
+}
+
 .task-item button {
   // height: 100%;
+
   margin-right: -3px;
   margin-top: -3px;
   margin-bottom: -3px;
@@ -129,10 +135,12 @@
 .project-heading {
   text-align: left;
   // float: left;
+  padding-left: 3px;
   font-size: 75%;
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .project-heading:hover {

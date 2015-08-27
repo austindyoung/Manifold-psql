@@ -15,7 +15,8 @@ class Api::ProjectsController < ApplicationController
 
   def index
     if params[:all]
-      @projects = current_user.all_projects
+      # optimize this
+      @projects = current_user.all_projects - Workspace.find(params[:workspace_id]).projects
     else
       @projects = current_user.projects
       render :index

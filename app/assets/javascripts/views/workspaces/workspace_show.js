@@ -14,7 +14,9 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
 
     renderProjectSearchModal: function () {
       var all_projects = new Manifold.Collections.Projects();
-      all_projects.fetch({data: {all: "t"}});
+      var id = this.model.id;
+      var id_string = parseInt(id);
+      all_projects.fetch({data: {all: "t", workspace_id: id_string}});
       var searchModal = new Manifold.Views.ProjectSearchModal({
         model: this.model,
         collection: all_projects

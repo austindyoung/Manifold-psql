@@ -27,6 +27,18 @@
    font-family: "Oxygen"
  }
 
+.list-group-item {
+  cursor: pointer;
+}
+
+ .user {
+   cursor: pointer;
+ }
+
+ .project-result {
+   cursor: pointer;
+ }
+
  .user-item {
     color: white;
     font-family: "Oxygen"
@@ -131,11 +143,13 @@
  	background-size: cover;
  }
 
+
  body.signup {
    background-image: image-url('working_background.jpg');
    background-size: 100%;
    background-size: cover;
  }
+
 
  .m-background {
   background: rgba(92, 88, 88, 0.6);
