@@ -9,7 +9,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       "click .navbar-header.project": "renderOverviewForm",
       'click .workspace-item': 'addToWorkspace',
       'click .task-completed': 'deleteTask',
-      'add': "log"
+      "click .edit-task": "log"
     },
 
     log: function () {
