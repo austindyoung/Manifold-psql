@@ -6,6 +6,25 @@ Manifold.Collections.Projects = Backbone.Collection.extend({
   //   this.organization = options.organization;
   // },
 
+  filter: function (prefix) {
+    prefix = prefix.toLowerCase();
+    var regex = "^" + prefix
+    return this.select(function (model) {
+      return model.attributes.title.toLowerCase().match(regex);
+    });
+  },
+
+  select: function (condition) {
+    var selected = [];
+    this.models.forEach(function (model) {
+      if (condition(model)) {
+        selected.push(model);
+      }
+    });
+    return selected;
+  },
+
+
   getOrFetch: function (id) {
     var project = this.get(id);
 

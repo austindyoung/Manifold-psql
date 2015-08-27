@@ -3,7 +3,16 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
 
     events: {
       "click .project-heading": "renderProject"
-      // "click #title": "navToProject"
+      // "click .project-to-ws": "renderProjectSearchModal",
+    },
+
+    renderProjectSearchModal: function () {
+      var all_projects = new Manifold.Collections.Projects();
+      all_projects.fetch({data: {all: "t"}});
+      var searchModal = new Manifold.Views.ProjectSearchModal({
+        collection: all_projects
+      });
+      $('body').append(searchModal.render().$el);
     },
 
     navToProject: function (event) {
