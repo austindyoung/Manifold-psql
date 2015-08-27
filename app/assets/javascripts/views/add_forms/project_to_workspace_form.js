@@ -5,13 +5,18 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
 
   className: "dropdown-menu workspaces-menu",
 
-  tagNAme: "ul",
+  tagName: "ul",
 
   template: JST['add_forms/project_to_workspace'],
 
+  initialize: function (options) {
+    this.workspace = options.workspace;
+  },
+
   render: function () {
     var renderedContent = this.template({
-      workspaces: this.collection
+      workspaces: this.collection,
+      currentWorkspace: this.workspace
     });
     this.$el.html(renderedContent);
 

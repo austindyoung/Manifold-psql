@@ -74,6 +74,7 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       var project = this.projects.findWhere({id: project_id});
       var projectView = new Manifold.Views.ProjectShow({
         model: project,
+        workspace: this.model,
         collection: this.workspaces,
         users: this.users
       });

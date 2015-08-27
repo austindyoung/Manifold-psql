@@ -70,6 +70,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       console.log("add modal");
       modal = new Manifold.Views.ProjectToWorkspaceForm({
         model: this.model,
+        workspace: this.workspace,
         collection: this.collection
       });
       $('.workspaces-dropdown').append(modal.render().$el);
@@ -96,7 +97,8 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       this.tasks = this.model.tasks();
       this.team_members = this.model.team_members();
       this.renderTaskForm();
-      this.users = options.users
+      this.users = options.users;
+      this.workspace = options.workspace;
       // this.renderAddToWorkspaceForm;
       // this.renderAddUserForm;
       // this.renderTasks();
