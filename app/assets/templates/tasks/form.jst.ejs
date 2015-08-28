@@ -19,12 +19,24 @@
     value="<%= task.escape("description") %>"
     >
     <input
+      class="form-control assignee"
+      placeholder="Assignee"
+      type="text"
+      name="assignee"
+      value=""
+    >
+    <input
       class="form-control"
       placeholder="Due Date"
       type="text"
       name="due_date"
       value="<%= task.escape("title") %>"
     >
+
+    <!-- members.filter_auto_complete(n,fragment)[0].names(n) -->
+    <!-- <ul> -->
+      <!-- <li>1</li> -->
+    <!-- </ul> -->
     <input type="submit" value="+" class="btn btn-default task-main-form">
   </form>
 </div>

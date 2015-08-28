@@ -1,7 +1,18 @@
 Manifold.Views.TaskForm = Backbone.View.extend({
   events: {
-    'submit form': 'submit'
+    'submit form': 'submit',
+    // "input input[type=text]": 'add'
+    "keyup": "add"
   },
+
+  // decrementCursor: function (event) {
+  //   var code = event.keyCode || event.which
+  //   debugger;
+  //   if (code === 8) {
+  //     this.cursorPosition = this.cursorPosition - 1;
+  //     console.log("dec");
+  //   }
+  // },
 
   template: JST['tasks/form'],
 
@@ -10,6 +21,9 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     // this.collection = options.collection;
     // this.parentDiv = options.parentDiv;
     // this.listenTo(this.model, 'sync', this.render);
+    this.prev_name_size = 0;
+    this.cursorPosition = 0;
+    this.members = options.members;
   },
 
   render: function () {
@@ -19,6 +33,34 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  add: function (event) {
+    // debugger;
+    event.preventDefault();
+    var $target = $(".assignee")
+    var code = event.keyCode || event.which
+    if (code === 8) {
+      this.cursorPosition = this.cursorPosition - 1;
+      console.log("dec");
+    } else {
+      this.cursorPosition = this.cursorPosition + 1;
+    }
+    // event.focus();
+    // debugger;
+    var name = $target.val();
+    if (name[this.cursorPosition - 1] == " " && name[this.cursorPosition - 2] === " ") {
+      this.cursorPosition = this.cursorPosition - 1;
+      name = name.replace(/  /, " ");
+    } else {
+      $target.val(this.members.filter_auto_complete(name.slice(0, this.cursorPosition)))
+      var cursorPosition = this.cursorPosition;
+    }
+    console.log(this.cursorPosition);
+    $target.setCursorPosition(this.cursorPosition)
+    this.prev_name_size = $target.val();
+    // $target.focus();
+
   },
 
   submit: function (event) {

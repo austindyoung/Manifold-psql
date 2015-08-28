@@ -157,7 +157,8 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       });
       var view = new Manifold.Views.TaskForm({
         collection: this.model.tasks(),
-        model: task
+        model: task,
+        members: this.team_members
       });
       this.addSubview('#task-form', view);
     },
