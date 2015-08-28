@@ -25,11 +25,12 @@ Manifold.Collections.Users = Backbone.Collection.extend({
         return model.attributes.fname.toLowerCase().match("^" + partition[0]) && model.attributes.mname.toLowerCase().match("^" + partition[1]) && model.attributes.lname.toLowerCase().match("^" + partition[2]);
      }
    });
-   if (results[0]) {
-     return results[0].attributes.fname + " " + results[0].attributes.mname + " " + results[0].attributes.lname;
-   } else {
-     return prefix;
-   }
+  //  if (results[0]) {
+  //    return results[0].attributes.fname + " " + results[0].attributes.mname + " " + results[0].attributes.lname;
+  //  } else {
+  //    return prefix;
+  //  }
+  return results[0];
   },
 
   select: function (condition) {
