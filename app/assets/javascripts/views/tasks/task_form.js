@@ -91,8 +91,7 @@ Manifold.Views.TaskForm = Backbone.View.extend({
       due_date: fullAttrs.due_date
     };
     attrs.creator_id = parseInt(Manifold.CURRENT_USER.id);
-    // attrs.organization_id = id
-
+    debugger;
 
     var success = function () {
       var task_id = this.model.id;
@@ -102,6 +101,10 @@ Manifold.Views.TaskForm = Backbone.View.extend({
         project_id: this.model.get("project_id")
       });
       this.render();
+      // var assignment = new Manifold.Models.Assignment({
+      //   task_id: task_id,
+      //   assignee_id:
+      // })
       // Backbone.history.navigate(
       //   '#/organizations/' + this.model.get("organization_id"),
       //   { trigger: true }
