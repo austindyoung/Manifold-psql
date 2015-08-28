@@ -48,6 +48,7 @@ createRequest: function (event) {
   });
   this.model.save()
   this.remove();
+  alert("a request was sent")
 },
 
 attachResults: function (event) {

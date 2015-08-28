@@ -5,10 +5,12 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
 
   events: {
     "click .create-workspace": "renderWorkspaceModal",
-    "click .workspace-heading": "navToWorkspace"
+    "click .workspace-heading": "navToWorkspace",
+    "click .ws-title": "navToWorkspace"
   },
 
   navToWorkspace: function (event) {
+    // debugger;
     var id = $(event.target).data().id;
     Backbone.history.navigate("#/workspaces/" + id, {trigger: true});
   },

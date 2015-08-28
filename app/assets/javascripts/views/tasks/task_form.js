@@ -1,15 +1,17 @@
 Manifold.Views.TaskForm = Backbone.View.extend({
   events: {
     'submit form': 'submit',
-    // "input input[type=text]": 'add'
     "keyup": "add"
+    // "input input[type=text]": 'add'
+//
   },
 
   // decrementCursor: function (event) {
+  //   console.log("def function");
   //   var code = event.keyCode || event.which
-  //   debugger;
+  //   // debugger;
   //   if (code === 8) {
-  //     this.cursorPosition = this.cursorPosition - 1;
+  //     this.cursorPosition = this.cursorPosition - 2;
   //     console.log("dec");
   //   }
   // },
@@ -37,6 +39,8 @@ Manifold.Views.TaskForm = Backbone.View.extend({
 
   add: function (event) {
     // debugger;
+    if (($(document.activeElement)).attr("class") === "form-control assignee") {
+    console.log("Add");
     event.preventDefault();
     var $target = $(".assignee")
     var code = event.keyCode || event.which
@@ -48,17 +52,22 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     }
     // event.focus();
     // debugger;
+
     var name = $target.val();
     if (name[this.cursorPosition - 1] == " " && name[this.cursorPosition - 2] === " ") {
       this.cursorPosition = this.cursorPosition - 1;
       name = name.replace(/  /, " ");
     } else {
         var result = this.members.filter_auto_complete(name.slice(0, this.cursorPosition));
-        if (result) {
+        if (result && result.attributes.mname !== "") {
           name = result.attributes.fname + " " + result.attributes.mname + " " + result.attributes.lname;
-        } else {
-          name = name.slice(0, this.cursorPosition)
         }
+        else if (result) {
+          name = result.attributes.fname + " " + result.attributes.lname;
+        }
+         else {
+          name = name.slice(0, this.cursorPosition);
+        };
       $target.val(name)
       var cursorPosition = this.cursorPosition;
     } if (result) {
@@ -69,18 +78,25 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     this.prev_name_size = $target.val();
     // debugger;
     // $target.focus();
-
+  }
   },
 
   submit: function (event) {
     event.preventDefault();
+    // debugger;
     // var id = this.parentDiv.id
-    var attrs = $(event.target).serializeJSON();
+    var fullAttrs = $(event.target).serializeJSON();
+    var attrs = {title: fullAttrs.title,
+      description: fullAttrs.description,
+      due_date: fullAttrs.due_date
+    };
     attrs.creator_id = parseInt(Manifold.CURRENT_USER.id);
     // attrs.organization_id = id
-    debugger;
+
 
     var success = function () {
+      var task_id = this.model.id;
+
       this.collection.add(this.model);
       this.model = new Manifold.Models.Task({
         project_id: this.model.get("project_id")
@@ -106,5 +122,6 @@ Manifold.Views.TaskForm = Backbone.View.extend({
       success: success,
       error: errors.bind(this)
     });
+    console.log(this.model.id);
   }
 });
