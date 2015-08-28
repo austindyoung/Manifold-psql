@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :organization_memberships, only: [:create]
     resources :organization_membership_notifications, only: [:create, :index]
     resources :project_membership_notifications, only: [:create, :index]
+    resources :assignments, only: [:create]
   end
 end
