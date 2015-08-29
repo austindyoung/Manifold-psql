@@ -37,40 +37,43 @@ Manifold.Views.TaskForm = Backbone.View.extend({
   },
 
   adder: function (event) {
-    if (($(document.activeElement)).attr("class") === "form-control assignee") {
-    event.preventDefault();
-    var $target = $(".assignee")
-    var code = event.keyCode || event.which
-    if (code === 8) {
-      this.cursorPosition = this.cursorPosition - 1;
-    } else {
-      this.cursorPosition = this.cursorPosition + 1;
-    }
-    // event.focus();
 
-    var name = $target.val();
-    if (name[this.cursorPosition - 1] == " " && name[this.cursorPosition - 2] === " ") {
-      this.cursorPosition = this.cursorPosition - 1;
-      name = name.replace(/  /, " ");
-    } else {
-        var result = this.members.filter_auto_complete(name.slice(0, this.cursorPosition));
-        if (result && result.attributes.mname !== "") {
-          name = result.attributes.fname + " " + result.attributes.mname + " " + result.attributes.lname;
-        }
-        else if (result) {
-          name = result.attributes.fname + " " + result.attributes.lname;
-        }
-         else {
-          name = name.slice(0, this.cursorPosition);
-        };
-      $target.val(name)
-      var cursorPosition = this.cursorPosition;
-    } if (result) {
-      $("#assignee_id").val(result.id);
-    }
-    $target.setCursorPosition(this.cursorPosition)
-    this.prev_name_size = $target.val();
-    // $target.focus();
+    event.preventDefault();
+    var code = event.keyCode || event.which
+    if ((($(document.activeElement)).attr("class") === "form-control assignee") && code !== 39) {
+      var $target = $(".assignee")
+      if (code === 8) {
+        this.cursorPosition = this.cursorPosition - 1;
+      } else {
+        this.cursorPosition = this.cursorPosition + 1;
+      }
+      // event.focus();
+
+      var name = $target.val();
+      if (name[this.cursorPosition - 1] == " " && name[this.cursorPosition - 2] === " ") {
+        this.cursorPosition = this.cursorPosition - 1;
+        name = name.replace(/  /, " ");
+      } else {
+          var result = this.members.filter_auto_complete(name.slice(0, this.cursorPosition));
+          if (result && result.attributes.mname !== "") {
+            name = result.attributes.fname + " " + result.attributes.mname + " " + result.attributes.lname;
+          }
+          else if (result) {
+            name = result.attributes.fname + " " + result.attributes.lname;
+          }
+           else {
+            name = name.slice(0, this.cursorPosition);
+          };
+        $target.val(name)
+        var cursorPosition = this.cursorPosition;
+      } if (result) {
+        $("#assignee_id").val(result.id);
+      }
+      $target.setCursorPosition(this.cursorPosition)
+      this.prev_name_size = $target.val();
+      // $target.focus();
+  } else if ((($(document.activeElement)).attr("class") === "form-control assignee")) {
+    console.log('assign');
   }
   },
 

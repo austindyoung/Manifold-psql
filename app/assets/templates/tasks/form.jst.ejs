@@ -18,19 +18,24 @@
     name="description"
     value="<%= task.escape("description") %>"
     >
-    <input
+    <!-- <input
       class="form-control assignee"
       placeholder="Assignee"
       type="text"
       name="assignee"
       value=""
-    >
+    > -->
+    <div class="input-group">
+      <input type="text" name="assignee" class="form-control assignee" placeholder="Assignee" aria-describedby="basic-addon1">
+      <span class="btn input-group-addon" id="basic-addon1">+</span>
+    </div>
 
     <input
       id="assignee_id"
       type="hidden"
       name="assignee_id"
     >
+
     <div id="assignees-stage"></div>
     <input
       class="form-control"
