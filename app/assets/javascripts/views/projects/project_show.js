@@ -13,8 +13,6 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
     },
 
     log: function (event) {
-      // debugger;
-      console.log("here");
       var data = $('.task-completed').parent().data();
       var task_id = data.id;
       var attrs = {title: data.heading, description: data.desc};
@@ -164,10 +162,13 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
     },
 
     renderTaskDetails: function (event) {
+      var $target = $(event.target)
+
+      if (!$target.hasClass('btn')) {
       $('.task-item button').remove();
       $('#project-overview').empty();
       $('.task-item').removeClass('active');
-      var $target = $(event.target)
+
       $target.addClass("active");
       var $span = $('<span></span>');
       // $span.addClass("glyphicon glyphicon-remove");
@@ -180,11 +181,14 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       var title = $target.data().heading;
       var id = $target.data().id;
       $('.task-item button').data("id", id);
-      var taskView = new Manifold.Views.TaskShow({
-        heading: title,
-        desc: desc
-      });
+      // var taskView = new Manifold.Views.TaskShow({
+      //   heading: title,
+      //   desc: desc
+      // });
+
+      var taskView = new Manifold.Views.TaskShow($target.data());
       this.addSubview('#project-overview', taskView);
+    }
     },
 
     renderOverviewForm: function () {

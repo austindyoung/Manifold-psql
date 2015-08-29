@@ -14,7 +14,6 @@ Manifold.Views.WorkspaceAddButton = Backbone.View.extend({
       var content = this.template();
       this.$el.html(content);
       return this;
-      // debugger;
     },
 
   });

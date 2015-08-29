@@ -24,23 +24,31 @@ Manifold.Views.TaskShow = Backbone.View.extend({
   template: JST['tasks/form_side'],
 
   initialize: function(options) {
-    this.heading = options.heading;
-    this.desc = options.desc;
-    // this.model = options.model;
-    // this.collection = options.collection;
-    // this.parentDiv = options.parentDiv;
-    // this.listenTo(this.model, 'sync', this.render);
+    this.attrs = options
   },
 
   render: function () {
-    this.model = new Manifold.Models.Task({
-      title: this.heading,
-      description: this.desc
-    })
-    var renderedContent = this.template({
-      task: this.model
-    });
+    // this.model = new Manifold.Models.Task({
+    //   title: this.heading,
+    //   description: this.desc
+    // })
+    // var renderedContent = this.template({
+    //   task: this.model
+    // });
+    //
+    var assigneesArray = JSON.parse(this.attrs.assignees);
+    var renderedContent = this.template({task: this.attrs});
     this.$el.html(renderedContent);
+    var self = this;
+    assigneesArray.forEach(function (assignee) {
+      var button = $('<button>');
+      button.addClass("btn btn-default member-heading user assignee");
+      var url = assignee.img_url;
+
+      var rightArg = "url(" + url + ")";
+      button.css('background', rightArg);
+      $(".assignees").append(button);
+    });
 
     return this;
   },

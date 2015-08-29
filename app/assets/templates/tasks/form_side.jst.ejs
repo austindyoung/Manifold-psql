@@ -10,28 +10,27 @@
       placeholder="New Task"
       type="text"
       name="title"
-      value="<%= task.escape("title") %>"
+      value="<%= task.heading %>"
     >
 
     <input
     class="form-control"
     placeholder="Description"
     name="description"
-    value="<%= task.escape("description") %>"
+    value="<%= task.desc %>"
     >
     <input
       class="form-control"
       placeholder="Due Date"
       type="text"
       name="due_date"
-      value="<%= task.escape("title") %>"
+      value="<%= task.title %>"
     >
-
   </form>
   <button class="btn btn-default task-side edit-task">Edit
   </button>
+  <div class="assignees btn-group" role="group">
+  </div>
 </div>
-<div class="assignees btn-group" role="group">
-aads
-</div>
+
 </div>
