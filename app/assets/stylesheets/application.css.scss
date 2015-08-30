@@ -31,8 +31,24 @@
   cursor: pointer;
 }
 
+
  .user {
    cursor: pointer;
+   margin: 0px;
+  //  height: 45px;
+  //  width: 45px;
+  //  padding-top: 0px;
+  //  padding-left: 0px;
+
+ }
+
+ .user:hover {
+   height: 45px;
+   width: 45px;
+
+  //  height: 50px;
+  //  width: 50px;
+
  }
 
  .project-result {
@@ -40,7 +56,11 @@
  }
 
  .user-item {
-    color: white;
+   font-weight: 900;
+  //  float: left;
+  //  top: 0px;
+   opacity: .5;
+    color: black;
     font-family: "Oxygen"
 }
 

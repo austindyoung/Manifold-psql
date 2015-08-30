@@ -1,7 +1,8 @@
 Manifold.Views.TaskForm = Backbone.View.extend({
   events: {
     'submit form': 'submit',
-    "keyup": "adder"
+    "keyup": "adder",
+    "click #assignee-stager": "stageAssignee"
     // "input input[type=text]": 'add'
 //
   },
@@ -22,18 +23,34 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     // this.collection = options.collection;
     // this.parentDiv = options.parentDiv;
     // this.listenTo(this.model, 'sync', this.render);
+    this.test = 1;
     this.prev_name_size = 0;
     this.cursorPosition = 0;
     this.members = options.members;
   },
 
   render: function () {
+    // debugger;
     var renderedContent = this.template({
       task: this.model
     });
     this.$el.html(renderedContent);
-
+    this.model = new Manifold.Models.Task();
     return this;
+  },
+
+  stageAssignee: function () {
+    $buffer = $("#assignee_id_buffer")
+    var current_id = parseInt($buffer.val());
+    var ids_array = JSON.parse($("#assignee_ids").val());
+    ids_array.push(current_id);
+    $("#assignee_ids").val(JSON.stringify(ids_array));
+    this.cursorPositon = 0;
+    $buffer.val('');
+    $nextAssignee = $("<div></div>");
+    $nextAssignee.text($(".assignee").val());
+    $("#assignees-stage").prepend($nextAssignee)
+    $(".assignee").val('');
   },
 
   adder: function (event) {
@@ -67,27 +84,29 @@ Manifold.Views.TaskForm = Backbone.View.extend({
         $target.val(name)
         var cursorPosition = this.cursorPosition;
       } if (result) {
-        $("#assignee_id").val(result.id);
+        $("#assignee_id_buffer").val(result.id);
       }
       $target.setCursorPosition(this.cursorPosition)
       this.prev_name_size = $target.val();
       // $target.focus();
-  } else if ((($(document.activeElement)).attr("class") === "form-control assignee")) {
-    console.log('assign');
+  } else if ((($(document.activeElement)).attr("class") === "form-control assignee") && code === 39) {
+    this.stageAssignee();
   }
   },
 
   submit: function (event) {
     event.preventDefault();
-    // var id = this.parentDiv.id
     var attrs = $(event.target).serializeJSON();
+    var assignee_ids = JSON.parse(attrs.assignee_ids);
+    var numAssignees = assignee_ids.length;
+    var count = 0;
+    delete attrs.assignee_ids;
     this.attrs = attrs
-    var assignee_id = attrs.assignee_id;
-    delete attrs.assignee;
     attrs.creator_id = parseInt(Manifold.CURRENT_USER.id);
-
+    this.attrs.assignees = [];
     var success = function () {
-
+      for (var i = 0; i < assignee_ids.length; i++) {
+      var assignee_id = assignee_ids[i];
       if (assignee_id) {
         var task_id = this.model.id;
         var assignment = new Manifold.Models.Assignment({
@@ -97,29 +116,37 @@ Manifold.Views.TaskForm = Backbone.View.extend({
         });
         assignment.save();
         var successUser = function (model) {
-          this.attrs.assignees = [model.attributes];
-          this.model.attributes = attrs;
-          this.collection.add(this.model);
+          // this.attrs.assignees = [model.attributes];
+          // debugger;
+
+          count = count + 1;
+          this.attrs.assignees.push(model.attributes);
+          if (count === numAssignees) {
+            this.model.attributes = this.attrs;
+            this.collection.add(this.model);
+            this.render();
+          }
+          this.render();
         }.bind(this);
+
         var user = new Manifold.Models.User({id: assignee_id})
 
         user.fetch({
           wait: true,
           success: successUser
         });
-      };
+
+      }
 
 
-      this.model = new Manifold.Models.Task({
-        project_id: this.model.get("project_id")
-      });
-      this.render();
+      // this.model = new Manifold.Models.Task({
+      //   project_id: this.model.get("project_id")
+      // });
 
-      // Backbone.history.navigate(
-      //   '#/organizations/' + this.model.get("organization_id"),
-      //   { trigger: true }
-      // );
-    }.bind(this);
+    }
+    // debugger;
+this.render();
+  }.bind(this);
 
     function errors(model, response) {
       $('.errors').empty();
@@ -129,6 +156,7 @@ Manifold.Views.TaskForm = Backbone.View.extend({
         $('.errors').append($li);
       }.bind(this));
     }
+
     // also save membership model between creator and project
     this.model.save(attrs, {
       wait: true,
@@ -136,5 +164,7 @@ Manifold.Views.TaskForm = Backbone.View.extend({
       error: errors.bind(this)
     });
     console.log(this.model.id);
+  this.render();
   }
+
 });

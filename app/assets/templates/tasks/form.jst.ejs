@@ -27,13 +27,19 @@
     > -->
     <div class="input-group">
       <input type="text" name="assignee" class="form-control assignee" placeholder="Assignee" aria-describedby="basic-addon1">
-      <span class="btn input-group-addon" id="basic-addon1">+</span>
+      <span class="btn input-group-addon" id="assignee-stager">+</span>
     </div>
 
     <input
-      id="assignee_id"
+      id="assignee_id_buffer"
       type="hidden"
-      name="assignee_id"
+    >
+
+    <input
+      id="assignee_ids"
+      type="hidden"
+      name="assignee_ids"
+      value="[]"
     >
 
     <div id="assignees-stage"></div>
