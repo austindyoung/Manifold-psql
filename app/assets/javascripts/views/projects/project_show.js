@@ -66,12 +66,16 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
 
     renderAddModal: function () {
       console.log("add modal");
+      // this.collection.fetch({
+      // success: function () {
       modal = new Manifold.Views.ProjectToWorkspaceForm({
         model: this.model,
         workspace: this.workspace,
         collection: this.collection
       });
       $('.workspaces-dropdown').append(modal.render().$el);
+    // }.bind(this)
+  // })
     },
 
     // renderTaskModal: function () {
@@ -128,6 +132,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
     },
 
     addTask: function (task) {
+      // debugger;
       var view = new Manifold.Views.TasksIndexItem({
         model: task
       });
@@ -163,7 +168,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
 
     renderTaskDetails: function (event) {
       var $target = $(event.target)
-
+      // debugger
       if (!$target.hasClass('btn')) {
       $('.task-item button').remove();
       $('#project-overview').empty();

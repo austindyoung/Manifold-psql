@@ -45,18 +45,36 @@ Manifold.Routers.Router = Backbone.Router.extend({
 
   projectShow: function (id) {
     var project = new Manifold.Models.Project({ id: id });
-    project.fetch();
-    this.workspaces.fetch();
-    this.users.fetch();
-    // var project = new Manifold.Collections.Projects().getOrFetch(id);
-    var view = new Manifold.Views.ProjectShow({
-      model: project,
-      collection: this.workspaces,
-      users: this.users
+
+    // project.fetch();
+    //
+    // this.workspaces.fetch();
+    // this.users.fetch();
+    // var view = new Manifold.Views.ProjectShow({
+    //   model: project,
+    //   collection: this.workspaces,
+    //   users: this.users
+    // });
+
+    project.fetch({
+      success: function () {
+        this.workspaces.fetch();
+        this.users.fetch();
+        var view = new Manifold.Views.ProjectShow({
+          model: project,
+          collection: this.workspaces,
+          users: this.users
+        });
+        this._swapView(view);
+        this.renderOrganizations();
+      }.bind(this)
     });
 
-    this._swapView(view);
-    this.renderOrganizations();
+
+
+
+    // this._swapView(view);
+    // this.renderOrganizations();
   },
 
   workspaceShow: function (id) {

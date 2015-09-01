@@ -22,8 +22,8 @@ Manifold.Views.ProjectIndexItem = Backbone.CompositeView.extend(
 
     initialize: function () {
       this.collection = this.model.tasks();
-      this.listenTo(this.model, 'sync', this.render);
-      // this.listenTo(this.collection, 'add', this.addTask);
+      // this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(this.collection, 'add', this.addTask);
       this.listenTo(this.collection, 'add resize', this.setHeight);
     },
 

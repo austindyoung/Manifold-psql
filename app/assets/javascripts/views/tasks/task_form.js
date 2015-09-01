@@ -32,10 +32,10 @@ Manifold.Views.TaskForm = Backbone.View.extend({
   render: function () {
     // debugger;
     var renderedContent = this.template({
-      task: this.model
+      task: new Manifold.Models.Task()
     });
     this.$el.html(renderedContent);
-    this.model = new Manifold.Models.Task();
+    // this.model = new Manifold.Models.Task();
     return this;
   },
 
@@ -106,6 +106,7 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     this.attrs.assignees = [];
     var success = function () {
       for (var i = 0; i < assignee_ids.length; i++) {
+        // debugger;
       var assignee_id = assignee_ids[i];
       if (assignee_id) {
         var task_id = this.model.id;
@@ -115,6 +116,7 @@ Manifold.Views.TaskForm = Backbone.View.extend({
           // oops
         });
         assignment.save();
+        // this.model = new Manifold.Models.Task();
         var successUser = function (model) {
           // this.attrs.assignees = [model.attributes];
           // debugger;
@@ -123,10 +125,13 @@ Manifold.Views.TaskForm = Backbone.View.extend({
           this.attrs.assignees.push(model.attributes);
           if (count === numAssignees) {
             this.model.attributes = this.attrs;
+            // delete this.model.attributes.id;
+            // debugger;
             this.collection.add(this.model);
+            // this.collection.add(this.task);
             this.render();
           }
-          this.render();
+          // this.render();
         }.bind(this);
 
         var user = new Manifold.Models.User({id: assignee_id})
@@ -158,13 +163,18 @@ this.render();
     }
 
     // also save membership model between creator and project
+    // this.task = new Manifold.Models.Task(attrs);
+    // attrs.project_id = this.model.attributes.project_id;
+    // delete this.model.attributes.id;
+    delete this.model.attributes.id
     this.model.save(attrs, {
+    // this.task.save({
       wait: true,
       success: success,
       error: errors.bind(this)
     });
     console.log(this.model.id);
-  this.render();
+  // this.render();
   }
 
 });

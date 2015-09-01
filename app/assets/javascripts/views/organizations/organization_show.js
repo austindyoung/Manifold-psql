@@ -9,17 +9,19 @@ Manifold.Views.OrganizationShow = Backbone.CompositeView.extend({
 
     initialize: function (options) {
       $('body').css('background-color', 'rgb(240,240,240) ')
-      // this.collection = this.model.projects();
+      this.collection = this.model.projects();
       // this.renderProjectForm();
 
       this.renderProjects();
+
       this.listenTo(this.model, 'sync', this.render);
       this.listenTo(this.collection, 'add', this.addProject);
       this.users = options.users;
     },
 
     navToProject: function (event) {
-      // event.preventDefault();
+      event.preventDefault();
+      // debugger;
 
       var $target = $(event.target);
       var project_id = $target.data().projectId;
@@ -52,6 +54,8 @@ Manifold.Views.OrganizationShow = Backbone.CompositeView.extend({
         model: project
       });
       this.addSubview('#projects', view);
+        // view.$el.data("projectId", project.id);
+
     },
 
     renderProjects: function () {

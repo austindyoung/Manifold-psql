@@ -16,7 +16,9 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template({
       workspaces: this.collection,
-      currentWorkspace: this.workspace
+      currentWorkspace: this.workspace,
+      model: this.model
+      //
     });
     this.$el.html(renderedContent);
     var headerItem = $("<li>Add to Workspace</li>");
@@ -24,7 +26,7 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
     this.$el.prepend(headerItem);
     return this;
   },
-
+  //
   // addToWorkspace: function (event) {
   //   console.log("added");
   //
