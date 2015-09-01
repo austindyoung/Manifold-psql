@@ -21,7 +21,8 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
       //
     });
     this.$el.html(renderedContent);
-    var headerItem = $("<li>Add to Workspace</li>");
+    var headerItem = $("<li> + to ws</li>");
+    headerItem.addClass("list-header");
     headerItem.addClass("header-item");
     this.$el.prepend(headerItem);
     return this;

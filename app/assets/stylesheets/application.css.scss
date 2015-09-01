@@ -13,7 +13,17 @@
  *= require_tree .
  *= require_self
  */
+.list-group-item:active {
+  background: black;
+}
 
+.list-header {
+  font-weight: 1600;
+}
+
+.list-group-item:hover {
+  background: gray;
+}
  @import "bootstrap-sprockets";
  @import "bootstrap";
 

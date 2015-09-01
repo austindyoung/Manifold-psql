@@ -60,7 +60,7 @@ Manifold.Routers.Router = Backbone.Router.extend({
       success: function () {
         this.workspaces.fetch();
         this.users.fetch();
-        var view = new Manifold.Views.ProjectShow({
+        var view = new Manifold.Views.ProjectShowInOrg({
           model: project,
           collection: this.workspaces,
           users: this.users
