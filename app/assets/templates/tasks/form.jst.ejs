@@ -1,5 +1,9 @@
 
+<div class="m-background">
 
+</div>
+
+<div class="m-content task">
 <div class="form-group">
   <form>
     <ul class="errors">
@@ -18,9 +22,9 @@
     name="description"
     value="<%= task.escape("description") %>"
     >
-
+<!--  -->
     <!-- <textarea class="form-control" placeholder="Description" aria-describedby="sizing-addon1"
-    name="description"><%= task.escape("description") %>
+    name="description" value="<%= task.escape("description") %>">
     </textarea> -->
     <!-- <input
       class="form-control assignee"
@@ -61,4 +65,5 @@
     <!-- </ul> -->
     <input type="submit" value="+" class="btn btn-default task-main-form">
   </form>
+</div>
 </div>

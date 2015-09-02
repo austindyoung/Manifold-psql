@@ -9,6 +9,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       "click .navbar-header.project": "renderOverviewForm",
       'click .workspace-item': 'addToWorkspace',
       'click .task-completed': 'deleteTask',
+      'click .add-task': 'renderTaskForm',
       "click .edit-task": "log"
     },
 
@@ -98,12 +99,11 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       // this.collection = this.model.projects();
       this.tasks = this.model.tasks();
       this.team_members = this.model.team_members();
-      this.renderTaskForm();
+      // this.renderTaskForm();
       this.users = options.users;
       this.workspace = options.workspace;
       // this.renderAddToWorkspaceForm;
       // this.renderAddUserForm;
-      // this.renderTasks();
       // this.listenTo(this.model, 'sync', this.render);
       this.renderTasks();
       this.renderTeamMembers();
@@ -132,7 +132,6 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
     },
 
     addTask: function (task) {
-      // debugger;
       var view = new Manifold.Views.TasksIndexItem({
         model: task
       });
@@ -163,7 +162,8 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
         model: task,
         members: this.team_members
       });
-      this.addSubview('#task-form', view);
+      // this.addSubview('#task-form', view);
+      $("body").append(view.render().$el)
     },
 
     renderTaskDetails: function (event) {

@@ -17,10 +17,16 @@
   background: black;
 }
 
+.navbar-brand.add-project {
+  padding-left: 78px;
+}
+
 .list-header {
   font-weight: 1600;
 }
-
+.m-content.task{
+  width: 300px;
+}
 .list-group-item:hover {
   background: gray;
 }

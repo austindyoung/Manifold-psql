@@ -2,9 +2,13 @@ Manifold.Views.TaskForm = Backbone.View.extend({
   events: {
     'submit form': 'submit',
     "keyup": "adder",
-    "click #assignee-stager": "stageAssignee"
+    "click #assignee-stager": "stageAssignee",
+    'click .m-background': 'removeModal'
     // "input input[type=text]": 'add'
 //
+  },
+  removeModal: function () {
+    this.remove();
   },
 
   // decrementCursor: function (event) {
@@ -48,17 +52,16 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     this.cursorPositon = 0;
     $buffer.val('');
     $nextAssignee = $("<div></div>");
-    $nextAssignee.text($(".assignee").val());
+    $nextAssignee.text($("input.assignee").val());
     $("#assignees-stage").prepend($nextAssignee)
-    $(".assignee").val('');
+    $("input.assignee").val('');
   },
 
   adder: function (event) {
-
     event.preventDefault();
     var code = event.keyCode || event.which
     if ((($(document.activeElement)).attr("class") === "form-control assignee") && code !== 39) {
-      var $target = $(".assignee")
+      var $target = $("input.assignee")
       if (code === 8) {
         this.cursorPosition = this.cursorPosition - 1;
       } else {
@@ -106,7 +109,6 @@ Manifold.Views.TaskForm = Backbone.View.extend({
     this.attrs.assignees = [];
     var success = function () {
       for (var i = 0; i < assignee_ids.length; i++) {
-        // debugger;
       var assignee_id = assignee_ids[i];
       if (assignee_id) {
         var task_id = this.model.id;
@@ -119,17 +121,17 @@ Manifold.Views.TaskForm = Backbone.View.extend({
         // this.model = new Manifold.Models.Task();
         var successUser = function (model) {
           // this.attrs.assignees = [model.attributes];
-          // debugger;
 
           count = count + 1;
           this.attrs.assignees.push(model.attributes);
           if (count === numAssignees) {
             this.model.attributes = this.attrs;
             // delete this.model.attributes.id;
-            // debugger;
             this.collection.add(this.model);
             // this.collection.add(this.task);
             this.render();
+            // this.remove();
+            //
           }
           // this.render();
         }.bind(this);
@@ -149,7 +151,6 @@ Manifold.Views.TaskForm = Backbone.View.extend({
       // });
 
     }
-    // debugger;
 this.render();
   }.bind(this);
 
@@ -173,7 +174,6 @@ this.render();
       success: success,
       error: errors.bind(this)
     });
-    console.log(this.model.id);
   // this.render();
   }
 
