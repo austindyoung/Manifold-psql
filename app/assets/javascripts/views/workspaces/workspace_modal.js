@@ -1,7 +1,22 @@
-Manifold.Views.WorkspaceModal = Backbone.View.extend({
+Manifold.Views.WorkspaceModal = Backbone.CompositeView.extend({
   events: {
+    // "input input[type=text]": 'attachResults',
     'submit form': 'submit',
     'click .m-background': 'removeModal'
+    // 'click .project-result': 'stageProject'
+  },
+
+  attachResults: function (event) {
+    $('#results').empty();
+    event.preventDefault();
+    var fragment = $(event.target).serializeJSON().fragment;
+
+    var resultsArray = this.collection.filter(fragment);
+    modal = new Manifold.Views.SelectProjectForm({
+      model: this.model,
+      resultsArray: resultsArray
+    });
+    $('#results').append(modal.render().$el);
   },
 
   removeModal: function () {

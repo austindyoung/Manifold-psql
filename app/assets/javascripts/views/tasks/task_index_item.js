@@ -16,6 +16,7 @@ Manifold.Views.TasksIndexItem = Backbone.View.extend({
       this.$el.data("id", this.model.id);
       this.$el.data("desc", this.model.attributes.description);
       this.$el.data("heading", this.model.attributes.title);
+      this.$el.data("due_date", this.model.attributes.due_date);
       var assigneesJSON = JSON.stringify(this.model.attributes.assignees);
       this.$el.data("assignees", assigneesJSON);
   // debugger;

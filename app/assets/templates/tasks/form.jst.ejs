@@ -16,16 +16,16 @@
       value="<%= task.escape("title") %>"
     >
 
-    <input
+    <!-- <input
     class="form-control"
     placeholder="Description"
     name="description"
     value="<%= task.escape("description") %>"
-    >
+    > -->
 <!--  -->
-    <!-- <textarea class="form-control" placeholder="Description" aria-describedby="sizing-addon1"
+    <textarea class="form-control" placeholder="Description" aria-describedby="sizing-addon1"
     name="description" value="<%= task.escape("description") %>">
-    </textarea> -->
+    </textarea>
     <!-- <input
       class="form-control assignee"
       placeholder="Assignee"
@@ -54,9 +54,8 @@
     <input
       class="form-control"
       placeholder="Due Date"
-      type="text"
+      type="date"
       name="due_date"
-      value="<%= task.escape("title") %>"
     >
 
     <!-- members.filter_auto_complete(n,fragment)[0].names(n) -->

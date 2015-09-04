@@ -2,7 +2,9 @@
 <!-- <%= member.escape("img_url")%> -->
 
 <div class="user-item" data-url="<%= member.escape("img_url")%>">
-  <%= member.escape("fname")[0].toUpperCase() +  member.escape("lname")[0].toUpperCase()%>
+
+  <!-- <%= member.escape("fname")[0].toUpperCase() +  member.escape("lname")[0].toUpperCase()%> -->
+    <%= member.escape("fname") + " " + member.escape("mname") + " " +  member.escape("lname")%>
 </div>
 
 

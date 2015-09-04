@@ -51,21 +51,23 @@
  .user {
    cursor: pointer;
    margin: 0px;
+   height: 42px;
+   width: 42px;
   //  height: 45px;
   //  width: 45px;
   //  padding-top: 0px;
   //  padding-left: 0px;
 
  }
-
- .user:hover {
-   height: 45px;
-   width: 45px;
-
-  //  height: 50px;
-  //  width: 50px;
-
- }
+ //
+ // .user:hover {
+ //   height: 45px;
+ //   width: 45px;
+ //
+ //  //  height: 50px;
+ //  //  width: 50px;
+ //
+ // }
 
  .project-result {
    cursor: pointer;
@@ -83,8 +85,8 @@
  .user-item:hover {
    font-weight: 900;
   //  float: left;
-  //  top: 0px;
-   opacity: .5;
+   margin-top: -20px;
+   opacity: 1;
     color: black;
     font-family: "Oxygen"
 }

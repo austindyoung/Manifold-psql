@@ -182,7 +182,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       $target.append($button);
       $('.task-item button').addClass("btn btn-defaul btn-xs task-completed");
       var $target = $(event.target);
-      var desc = $target.data().desc;
+      var desc = $target.data().description;
       var title = $target.data().heading;
       var id = $target.data().id;
       $('.task-item button').data("id", id);

@@ -168,6 +168,7 @@ this.render();
     // attrs.project_id = this.model.attributes.project_id;
     // delete this.model.attributes.id;
     delete this.model.attributes.id
+
     this.model.save(attrs, {
     // this.task.save({
       wait: true,
