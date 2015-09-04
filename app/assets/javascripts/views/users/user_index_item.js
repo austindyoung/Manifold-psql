@@ -69,6 +69,7 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend(
       var rightArg = "url(" + url + ")";
       this.$el.css('background', rightArg);
       this.$el.data("attrs", this.model.attributes);
+      // this.$el.append($("<div>"))
       // this.$el.data('project-id', this.model.id);
       //
       // this.renderTasks();

@@ -47,6 +47,14 @@
   cursor: pointer;
 }
 
+.user-result {
+  cursor: pointer;
+}
+
+.user-result:hover {
+  cursor: pointer;
+  background: gray;
+}
 
  .user {
    cursor: pointer;
