@@ -17,12 +17,13 @@
 
 </head>
 <body>
- <%= render "layouts/errors" %>
- <% if logged_in? %>
-  <%= button_to "Sign Out", session_url, method: :delete %>
-<% end %>
+<%= render "layouts/errors" %>
+ <!-- <% if logged_in? %> -->
+
+<!-- <% end %> -->
 
 <%= yield %>
+<!-- <%= button_to "Sign Out", session_url, method: :delete %> -->
 
 </body>
 </html>

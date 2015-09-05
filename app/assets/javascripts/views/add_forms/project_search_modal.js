@@ -25,7 +25,6 @@ Manifold.Views.ProjectSearchModal = Backbone.View.extend({
     });
     var project = new Manifold.Models.Project({id: selected_project_id});
     var success = function (model) {
-      debugger
       this.projects.add(model)
     }.bind(this);
     project.fetch({

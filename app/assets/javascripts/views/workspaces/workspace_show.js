@@ -82,7 +82,6 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
     },
 
     addProject: function (project) {
-debugger
       var view = new Manifold.Views.ProjectIndexItem({
         model: project
       });

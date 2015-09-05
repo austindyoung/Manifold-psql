@@ -7,6 +7,9 @@ Manifold.Views.NavBar = Backbone.CompositeView.extend({
     this.organizations = new Manifold.Collections.Organizations();
   },
 
+  className: "navbar navbar-default main",
+  tagName: "nav",
+
   events: {
     // "click #workspaces" : "navToWorkspaces",
     // "click #organizations" : "navToOrganizations"
@@ -47,7 +50,10 @@ Manifold.Views.NavBar = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     this.$('#search-results-list')
+    this.$el.find('#sign_out_auth_token')
+            .val($('meta[name=csrf-token]').attr('content'));
     // remove sortable
     return this;
   }
+
 });

@@ -13,7 +13,7 @@
 
 // .content {
 //   position: relative;
-//   margin: 0 auto;
+//   margin: 0 ;
 //   background: #fff;
 //   width: 900px;
 //   border-left: 1px solid #ccc;
@@ -54,7 +54,7 @@
 }
 
 #content-sidebar {
-  padding-bottom: 10px;
+  // padding-bottom: 10px;
 }
 
 .sidebar-header-item {
@@ -148,9 +148,11 @@
   // float: left;
   padding-left: 3px;
   font-size: 75%;
+  width: 100px;
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
