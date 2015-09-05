@@ -19,7 +19,8 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       all_projects.fetch({data: {all: "t", workspace_id: id_string}});
       var searchModal = new Manifold.Views.ProjectSearchModal({
         model: this.model,
-        collection: all_projects
+        collection: all_projects,
+        projects: this.projects
       });
       $('body').append(searchModal.render().$el);
     },
@@ -40,10 +41,10 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       this.projects = this.model.projects();
       this.users = options.users;
       this.workspaces = options.workspaces;
-      this.renderProjects();
-      // this.renderMembers();
+      // this.renderProjects();
+      // debugger;
+      this.listenTo(this.projects, 'add', this.addProject);
       this.listenTo(this.model, 'sync', this.render);
-      this.listenTo(this.collection, 'add', this.addProject);
       this.listenTo(this.members, 'add', this.addMember);
     },
 
@@ -53,9 +54,8 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       });
       this.$el.html(content);
       this.attachSubviews();
-      this.renderProjects();
-      // this.renderProjectForm();
-      // this.renderMembers();
+      // this.renderProjects();
+
       this.$('#projects-sidebar');
       // remove sortable
       this.$('#members');
@@ -82,11 +82,11 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
     },
 
     addProject: function (project) {
-      console.log(project.attributes.id);
+debugger
       var view = new Manifold.Views.ProjectIndexItem({
         model: project
       });
-      this.addSubview('#projects-sidebar', view);
+      this.addSubview('#content-sidebar', view);
     },
 
     addMember: function (member) {
@@ -98,6 +98,7 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
 
     renderProjects: function () {
       this.model.projects().each(this.addProject.bind(this));
+
     },
 
     renderMembers: function () {

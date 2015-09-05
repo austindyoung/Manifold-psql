@@ -13,6 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   top-padding: 0px;
+ }
+nav {
+  top-margin: 0px;
+}
+ .project-show {
+
+ }
 .list-group-item:active {
   background: black;
 }
@@ -67,6 +76,14 @@
   //  padding-left: 0px;
 
  }
+
+ .thumbnail-name {
+   opacity: 0;
+ }
+ // .thumbnail-name:hover {
+ //   bottom-margin: -50px;
+ //   opacity: 1;
+ // }
  //
  // .user:hover {
  //   height: 45px;

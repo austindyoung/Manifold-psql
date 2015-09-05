@@ -8,7 +8,8 @@ Manifold.Views.ProjectSearchModal = Backbone.View.extend({
 
   template: JST['add_forms/project_search_modal'],
 
-  initialize: function () {
+  initialize: function (options) {
+    this.projects = options.projects;
   },
 
   removeForm: function () {
@@ -23,7 +24,13 @@ Manifold.Views.ProjectSearchModal = Backbone.View.extend({
       workspace_id: workspace_id
     });
     var project = new Manifold.Models.Project({id: selected_project_id});
-    project.fetch();
+    var success = function (model) {
+      debugger
+      this.projects.add(model)
+    }.bind(this);
+    project.fetch({
+      success: success
+    });
     var projectIndexItem = new Manifold.Views.ProjectIndexItem({
       model: project
     });
@@ -33,6 +40,7 @@ Manifold.Views.ProjectSearchModal = Backbone.View.extend({
     //   adder_id: parseInt(Manifold.CURRENT_USER.id)
     // });
     // notification.save();
+
     $('#projects-sidebar').append(projectIndexItem.render().$el);
     this.remove();
     this.model.save();

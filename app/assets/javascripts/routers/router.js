@@ -87,8 +87,7 @@ Manifold.Routers.Router = Backbone.Router.extend({
     var view = new Manifold.Views.WorkspaceShow({
       model: workspace,
       workspaces: this.workspaces,
-      users: this.users,
-      projects: this.projects
+      users: this.users
     });
 
     this._swapView(view);
