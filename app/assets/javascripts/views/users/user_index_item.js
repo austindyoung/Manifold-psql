@@ -10,6 +10,7 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend(
     className: "btn btn-default member-heading user",
     events: {
       'hover': 'displayInfo',
+      // 'mousedown': 'log',
       'sortreceive': 'receiveTask',
       'sortremove': 'removeTask',
       'sortstop': 'saveTasks'
