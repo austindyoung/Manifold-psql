@@ -268,32 +268,38 @@ blmales = ["http://res.cloudinary.com/dlyzaubjo/image/upload/c_scale,w_50/v14413
 
 blfemale = ["http://res.cloudinary.com/dlyzaubjo/image/upload/c_scale,w_42/v1441344671/thumb36bg_skesmf.jpg"
 ]
+
+people = (amales + brmale + wfemales + blmales + blfemale).shuffle
 User.create!([
 {fname: "Guest", mname: "G", lname: "User", email: "guest@example.com", password_digest: BCrypt::Password.create("aaaaaa"), img_url: "http://res.cloudinary.com/dlyzaubjo/image/upload/c_scale,w_45/v1440547188/Grey_Wolf_Face_xhe7wb.jpg"}
 ])
 
-wmales.each do |male|
-  User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: male)
+# wmales.each do |male|
+#   User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: male)
+# end
+#
+# wmales = User.all
+#
+# wfemales.each do |female|
+#   User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: female)
+# end
+#
+# wfemales = User.all[-wfemales.size..-1]
+#
+#
+# blmales.each do |male|
+#   User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: male)
+# end
+#
+# blmales = User.all[-blmales.size..-1]
+#
+# User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: blfemale[0])
+#
+# blfemale = User.all.last
+
+people.each do |person|
+  User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: person)
 end
-
-wmales = User.all
-
-wfemales.each do |female|
-  User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: female)
-end
-
-wfemales = User.all[-wfemales.size..-1]
-
-
-blmales.each do |male|
-  User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: male)
-end
-
-blmales = User.all[-blmales.size..-1]
-
-User.create!(fname: Faker::Name.first_name, mname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("aaaaaa"), img_url: blfemale[0])
-
-blfemale = User.all.last
 
 OrganizationMembership.create!([
   {organization_id: 6, member_id: 1},
@@ -333,7 +339,7 @@ WorkspaceProjectMembership.create!([
 
 projs = [6, 10, 8, 2, 3, 13]
 projs.each do |proj|
-  people = wfemales + blmales + [blfemale] + wmales
+  people = User.all[1..-1]
   9.times do
     member_id = people.sample.id
     TeamMembership.create!(member_id: member_id, project_id: proj)
