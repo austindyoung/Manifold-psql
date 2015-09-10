@@ -58,6 +58,10 @@
    font-family: "Oxygen";
  }
 
+ textarea {
+   z-index: 100000px;
+ }
+
  html {
    margin: 0;
    padding: 0;
@@ -65,8 +69,9 @@
    font: inherit;
    vertical-align: baseline;
    font-family: "Oxygen";
-   background-image: image-url('dog.jpg');
-   background-size: 100%;
+   background-image: image-url('subtle_gray2.jpg');
+   background-size: 50%;
+   //
    background-size: cover;
  }
 
