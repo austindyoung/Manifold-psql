@@ -3,6 +3,9 @@ Manifold.Views.ProjectFormSide = Backbone.View.extend({
     'submit form': 'edit'
   },
 
+  // className: "form",
+  tagName: "form",
+
   template: JST['projects/form_side'],
 
   initialize: function(options) {

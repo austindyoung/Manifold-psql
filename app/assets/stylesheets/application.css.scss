@@ -13,9 +13,6 @@
  *= require_tree .
  *= require_self
  */
- body {
-   top-padding: 0px;
- }
 
  .project-show {
 
@@ -41,13 +38,25 @@
  @import "bootstrap";
 
 
- html, body, form, h1, div, label {
+ body, form, h1, div, label {
    margin: 0;
    padding: 0;
    border: 0;
    font: inherit;
    vertical-align: baseline;
-   font-family: "Oxygen"
+   font-family: "Oxygen";
+ }
+
+ html {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font: inherit;
+   vertical-align: baseline;
+   font-family: "Oxygen";
+   background-image: image-url('paper_back.jpg');
+   background-size: 100%;
+   background-size: cover;
  }
 
 .list-group-item {
@@ -139,11 +148,12 @@
    display: inline;
    cursor: pointer;
  }
- body {
-   padding: 0;
-   font-family: sans-serif;
-   background: #ddd;
- }
+ // body {
+ //   padding: 0;
+ //   font-family: sans-serif;
+ //  //  background: #ddd;
+ //  background: green;
+ // }
  .switch {
    margin: 20px;
  }

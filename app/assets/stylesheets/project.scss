@@ -32,16 +32,27 @@
 //   background: #ccc;
 // }
 
+#project {
+  width: 90%;
+}
+
+.show {
+  width: 100%;
+  height: 100%;
+}
+
 #tasks {
+  margin-right: 0px;
   max-height: 400px;
   overflow: scroll;
+
 }
 .form {
   width: 350px;
   // D4D4D4
   border: 2px solid #DFE8E4;
   border-radius: 3px;
-  padding: 5px;
+  // padding: 5px;
   background: #DFE6E8;
 }
 #project-sidebar-heading {
@@ -190,12 +201,14 @@
 .project-tasks {
   float: left;
   // A7C9C1
+  margin-right: 0px;
+  //
   background: #DFE8E4;
   width: 250px;
   min-height: 200px;
   padding: 20px;
   border: 2px;
-  border-radius: 3px;
+  border-radius: 0px;
   border: 1px solid #DFE6E8;
 }
 
@@ -210,10 +223,21 @@
 }
 
 #project-overview {
-  padding: 20px;
-  float: right;
+  // padding: 20px;
+  float: left;
   //
   margin-left: 0px;
+  //
+  border-radius: 0px;
+  width: 70%;
+
+  // D4D4D4
+  border: 2px solid #DFE8E4;
+  border-radius: 0px;
+  // padding: 5px;
+  background: #DFE6E8;
+
+  height: 100%;
 }
 
 // .header-item {
