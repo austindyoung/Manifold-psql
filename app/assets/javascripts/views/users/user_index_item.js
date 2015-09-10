@@ -9,16 +9,23 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend(
   //   },
     className: "btn btn-default member-heading user",
     events: {
-      'hover': 'displayInfo',
+      // 'mouseenter .member-heading': 'displayInfo',
+      // 'mouseleave .btn': 'log',
       // 'mousedown': 'log',
       'sortreceive': 'receiveTask',
       'sortremove': 'removeTask',
       'sortstop': 'saveTasks'
     },
 
+    log: function () {
+      console.log("out");
+    },
+
+
     displayInfo: function (event) {
       $target = $(event.target);
-      this.$el.append($("<div>NAME</div>"))
+      $target.show();
+      // $(".user-item").hide();
       this.render();
     },
 
@@ -27,6 +34,8 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend(
     // className: 'project-display',
 
     initialize: function () {
+      // $(".user-item").hide();
+
 
       // this.collection = this.model.tasks();
       this.listenTo(this.model, 'sync', this.render);
@@ -83,6 +92,8 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend(
       var name = attrs.fname + " " + attrs.mname + " " + attrs.lname;
       $nameDiv.text(name);
       this.$el.append($nameDiv)
+
+
       // this.$el.data('project-id', this.model.id);
       //
       // this.renderTasks();

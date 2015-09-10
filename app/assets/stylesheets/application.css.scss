@@ -38,6 +38,17 @@
  @import "bootstrap";
 
 
+
+.member-heading {
+  color: transparent;
+}
+
+
+
+.member-heading:hover {
+  color: white;
+}
+
  body, form, h1, div, label {
    margin: 0;
    padding: 0;
@@ -54,7 +65,13 @@
    font: inherit;
    vertical-align: baseline;
    font-family: "Oxygen";
-   background-image: image-url('paper_back.jpg');
+   background-image: image-url('dog.jpg');
+   background-size: 100%;
+   background-size: cover;
+ }
+
+ .content {
+   background-image: image-url('paper_back_lined.jpg');
    background-size: 100%;
    background-size: cover;
  }
@@ -104,24 +121,25 @@
  .project-result {
    cursor: pointer;
  }
-
+//
  .user-item {
+   margin-top: -20px;
    font-weight: 900;
   //  float: left;
   //  top: 0px;
-   opacity: 0;
+  //  opacity: 0;
     color: black;
     font-family: "Oxygen"
 }
 
- .user-item:hover {
-   font-weight: 900;
-  //  float: left;
-   margin-top: -20px;
-   opacity: 1;
-    color: black;
-    font-family: "Oxygen"
-}
+//  .user-item:hover {
+//    font-weight: 900;
+//   //  float: left;
+//    margin-top: -20px;
+//    opacity: 1;
+//     color: black;
+//     font-family: "Oxygen"
+// }
 
  // input[type="text"],
  // input[type="password"],

@@ -49,9 +49,11 @@
   top: 3px;
 }
 
-#workspaces {
-
-}
+// #workspaces {
+//   background-image: image-url('paper_back_lined.jpg');
+//   background-size: 100%;
+//   background-size: cover;
+// }
 
 .create-workspace:hover {
   color: green;
@@ -91,13 +93,15 @@
 #projects-sidebar {
   background: #E4EBED;
   float: left;
-  right-margin: 10px;
-  width: 150px;
-  height: 500px;
+  width: 190px;
+
+  // height: 500px;
+  // min-height: 379px;
+  min-height: 900px;
   padding: 3px;
   border: 1px solid gray;
   margin: 0px;
   border-radius: 2px;
   padding-bottom: 5px;
-  height: auto;
+  // height: auto;
 }
