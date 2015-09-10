@@ -120,13 +120,15 @@ Manifold.Routers.Router = Backbone.Router.extend({
   },
 
   organizationSearch: function (fragment) {
-    this.organizations.fetch({ data: { search: fragment }});
+    var orgs = new Manifold.Collections.Organizations();
+    orgs.fetch({ data: { search: fragment }});
     var view = new Manifold.Views.OrganizationResults({
-      organizations: this.organizations,
+      organizations: orgs,
       navbar: this.navbar
     });
     this._swapView(view);
     this.renderOrganizations();
+
   },
 
   userSearch: function (fragment) {

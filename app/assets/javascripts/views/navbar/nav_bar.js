@@ -19,8 +19,10 @@ Manifold.Views.NavBar = Backbone.CompositeView.extend({
 
   search: function (event) {
     event.preventDefault();
+  
     var fragment = this.$("input.form-control").val();
     Backbone.history.navigate("#search?fragment=" + fragment, {trigger: true});
+
     // if (search !== "") {
     //   this.organizations.fetch({ data: { search: search }});
     //   this.renderResults();
