@@ -306,7 +306,10 @@ OrganizationMembership.create!([
   {organization_id: 4, member_id: 1},
   {organization_id: 7, member_id: 1},
   {organization_id: 2, member_id: 1},
-  {organization_id: 3, member_id: 1}
+  {organization_id: 3, member_id: 1},
+  {organization_id: 1, member_id: 2},
+  {organization_id: 1, member_id: 3},
+  {organization_id: 1, member_id: 4}
 
 ])
 

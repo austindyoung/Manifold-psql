@@ -5,7 +5,7 @@ template: JST['add_forms/find_org_member'],
 events: {
   'submit form': 'renderSelectUserModal',
   'input input[type=text]': 'attachResults',
-  'click .user': 'createRequest',
+  'click .user-result': 'createRequest',
   'click .m-background': 'removeForm'
 },
 
