@@ -1,5 +1,5 @@
-Manifold.Views.UserIndexItem = Backbone.CompositeView.extend({
-    className: "btn btn-default member-heading user",
+Manifold.Views.UserSearchResult = Backbone.CompositeView.extend({
+    className: "user-result",
     events: {
 
       'sortreceive': 'receiveTask',
@@ -11,7 +11,7 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend({
       console.log("out");
     },
 
-    template: JST['users/index_item'],
+    template: JST['users/search_result'],
 
     // className: 'project-display',
 
@@ -26,7 +26,8 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend({
       this.$el.html(content);
       var url = this.model.escape("img_url");
       var rightArg = "url(" + url + ")";
-      this.$el.css('background', rightArg);
+      // debugger
+      this.$el.children('.img').css('background', rightArg);
       // this.$el.data("attrs", this.model.attributes);
       this.$el.val(this.model.attributes);
       // debugger
@@ -39,4 +40,3 @@ Manifold.Views.UserIndexItem = Backbone.CompositeView.extend({
       return this;
     },
   });
-// )

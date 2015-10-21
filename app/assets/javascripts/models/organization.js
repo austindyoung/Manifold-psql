@@ -6,7 +6,6 @@ Manifold.Models.Organization = Backbone.Model.extend({
     if (!this._projects) {
       this._projects = new Manifold.Collections.Projects([], { organization: this });
     }
-
     return this._projects;
   },
 

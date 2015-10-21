@@ -1,28 +1,32 @@
-Manifold.Collections.Projects = Backbone.Collection.extend({
+Manifold.Collections.Projects = Backbone.Searchable.extend({
   url: "/api/projects",
   model: Manifold.Models.Project,
-
-  // initialize: function (models, options) {
-  //   this.organization = options.organization;
+  filterCondition: function (model, regex) {
+    // debugger
+     return this.display(model).match(regex);
+  },
+  //
+  // display: function (model) {
+  //   return model.attributes.title.toLowerCase().replace(/  /, " ");
   // },
 
-  filter: function (prefix) {
-    prefix = prefix.toLowerCase();
-    var regex = "^" + prefix
-    return this.select(function (model) {
-      return model.attributes.title.toLowerCase().match(regex);
-    });
-  },
-
-  select: function (condition) {
-    var selected = [];
-    this.models.forEach(function (model) {
-      if (condition(model)) {
-        selected.push(model);
-      }
-    });
-    return selected;
-  },
+  // filter: function (prefix) {
+  //   prefix = prefix.toLowerCase();
+  //   var regex = "^" + prefix
+  //   return this.select(function (model) {
+  //     return model.attributes.title.toLowerCase().match(regex);
+  //   });
+  // },
+  //
+  // select: function (condition) {
+  //   var selected = [];
+  //   this.models.forEach(function (model) {
+  //     if (condition(model)) {
+  //       selected.push(model);
+  //     }
+  //   });
+  //   return selected;
+  // },
 
 
   getOrFetch: function (id) {

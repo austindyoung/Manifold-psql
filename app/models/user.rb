@@ -123,6 +123,7 @@ class User < ActiveRecord::Base
   )
 
   def self.search(fragment)
+    return [] if fragment == ""
     fragment = fragment.downcase
     (User.where("fname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}") + User.where("mname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}") + User.where("lname ~* ?", "^#{fragment}[a-z]*|[a-z]* #{fragment}")).uniq
   end

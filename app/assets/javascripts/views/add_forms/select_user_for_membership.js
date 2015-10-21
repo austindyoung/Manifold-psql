@@ -28,7 +28,6 @@ Manifold.Views.AddUserForm = Backbone.View.extend({
   },
 
   addUser: function (event) {
-    debugger;
     var selected_user_id = $(event.target).data().id;
     var organization_id = this.model.id;
     this.model = new Manifold.Models.OrganizationMembership({

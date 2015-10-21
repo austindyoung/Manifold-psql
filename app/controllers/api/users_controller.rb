@@ -6,11 +6,10 @@ class Api::UsersController < ApplicationController
 
   def index
     if params[:search]
-      @users = User.all
-      # search(params[:search])
+      @users = User.search(params[:search])
     else
       @users = User.all
-    render :index
     end
+    render :index
   end
 end

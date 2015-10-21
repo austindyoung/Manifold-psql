@@ -1,9 +1,7 @@
 Manifold.Views.WorkspaceModal = Backbone.CompositeView.extend({
   events: {
-    // "input input[type=text]": 'attachResults',
-    'submit form': 'submit',
+    'click input[type=submit]': 'removeModal',
     'click .m-background': 'removeModal'
-    // 'click .project-result': 'stageProject'
   },
 
   attachResults: function (event) {
@@ -37,8 +35,58 @@ Manifold.Views.WorkspaceModal = Backbone.CompositeView.extend({
       workspace: this.model
     });
     this.$el.html(renderedContent);
+    var view = this;
 
-    return this;
+    var display = function (model) {
+      return model.attributes.title;
+    };
+
+    var filterCondition = function (model, regex) {
+       return this.display(model).toLowerCase().match(regex);
+    };
+
+
+
+    // var submit = function (el, last) {
+    //   var last = last
+    //   var project_id = el.id
+    //   if (project_id) {
+    //     var workspace_id = view.model.id;
+    //     var assignment = new Manifold.Models.WorkspaceProjectMembership({
+    //       project_id: project_id,
+    //       workspace_id: workspace_id
+    //     });
+    //     assignment.save();
+    //   };
+    // }.bind(this);
+
+    var projects = new Manifold.Collections.Projects();
+
+    projects.fetch({
+      success: function (collection) {
+        this.$el.stager(collection, this, {
+          show: true,
+          unique: true,
+          display: display,
+          identifier: display,
+          placeholder: "project",
+          filterCondition: filterCondition,
+          extra: {},
+          type: Manifold.Models.WorkspaceProjectMembership,
+          collectionName: "projects",
+          modelType: Manifold.Models.User,
+          primaryKey: "workspace_id",
+          foreignKey: "project_id"
+        });
+      }.bind(this)
+    })
+    // this.$el.stager(this.members, this, {
+    //   autoFilter: autoFilter,
+    //   autoDisplay: autoDisplay,
+    //   extra: {},
+    //   submit: submit
+    // });
+    return view;
   },
 
   submit: function (event) {

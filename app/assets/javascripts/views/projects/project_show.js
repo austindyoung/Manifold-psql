@@ -9,7 +9,7 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       "click .navbar-header.project": "renderOverviewForm",
       'click .workspace-item': 'addToWorkspace',
       'click .task-completed': 'deleteTask',
-      'click .add-task': 'renderTaskForm',
+      'click .add-task-button': 'renderTaskForm',
       "click .edit-task": "log"
     },
 
@@ -61,28 +61,17 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
       var project = new Manifold.Models.Project({id: project_id});
       project.fetch();
       this.model.save()
-      // this.remove();
     },
 
 
     renderAddModal: function () {
-      console.log("add modal");
-      // this.collection.fetch({
-      // success: function () {
       modal = new Manifold.Views.ProjectToWorkspaceForm({
         model: this.model,
         workspace: this.workspace,
         collection: this.collection
       });
-      $('.workspaces-dropdown').append(modal.render().$el);
-    // }.bind(this)
-  // })
+      $('.dropdown-submenu').append(modal.render().$el);
     },
-
-    // renderTaskModal: function () {
-    //   console.log("task modal");
-    //
-    // },
 
     renderAddUserModal: function () {
       modal = new Manifold.Views.UserToProjectForm({
@@ -97,14 +86,20 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
     initialize: function (options) {
       $('body').css('background-color', 'rgb(240,240,240) ')
       // this.collection = this.model.projects();
+      this.member_of_project = false;
       this.tasks = this.model.tasks();
       this.team_members = this.model.team_members();
-      // this.renderTaskForm();
+      this.in_org = options.in_org;
+      var team_member_ids = this.team_members.models.map(function (member) {
+        return member.id;
+      });
+      team_member_ids.forEach(function (id) {
+        if (id == Manifold.CURRENT_USER.id) {
+          this.member_of_project = true;
+        };
+      }.bind(this));
       this.users = options.users;
       this.workspace = options.workspace;
-      // this.renderAddToWorkspaceForm;
-      // this.renderAddUserForm;
-      // this.listenTo(this.model, 'sync', this.render);
       this.renderTasks();
       this.renderTeamMembers();
       this.listenTo(this.model, 'add', this.render);
@@ -117,25 +112,31 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
 
     render: function () {
       var content = this.template({
-        project: this.model
+        project: this.model,
+        member_of_project: this.member_of_project,
+        in_org: this.in_org
       });
       this.$el.html(content);
       this.attachSubviews();
       // this.renderTasks();
       // this.renderTeamMembers();
       this.renderOverviewForm();
-      this.$('#tasks');
-      this.$('#team-members');
-      // remove sortable
+      var $addTaskButton = $('<div>+</div>');
+      $addTaskButton.addClass('add-task-button');
+      if (this.member_of_project) {
+        $('#tasks').prepend($addTaskButton);
+      };
       this.renderAddModal();
       return this;
     },
 
     addTask: function (task) {
+      // debugger
       var view = new Manifold.Views.TasksIndexItem({
         model: task
       });
       this.addSubview('#tasks', view);
+
     },
 
     addTeamMember: function (team_member) {
@@ -168,7 +169,6 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
 
     renderTaskDetails: function (event) {
       var $target = $(event.target)
-      // debugger
       if (!$target.hasClass('btn')) {
       $('.task-item button').remove();
       $('#project-overview').empty();
@@ -176,7 +176,6 @@ Manifold.Views.ProjectShow = Backbone.CompositeView.extend({
 
       $target.addClass("active");
       var $span = $('<span></span>');
-      // $span.addClass("glyphicon glyphicon-remove");
       $button = $("<button>x</button>");
       $button.append($span);
       $target.append($button);

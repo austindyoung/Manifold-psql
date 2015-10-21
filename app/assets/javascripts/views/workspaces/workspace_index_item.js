@@ -1,11 +1,5 @@
 Manifold.Views.WorkspaceIndexItem = Backbone.CompositeView.extend({
 
-    // events: {
-    //   'sortreceive': 'receiveTask',
-    //   'sortremove': 'removeTask',
-    //   'sortstop': 'saveTasks'
-    // },
-
     template: JST['workspaces/index_item'],
 
     className: 'workspace-heading',
@@ -18,6 +12,7 @@ Manifold.Views.WorkspaceIndexItem = Backbone.CompositeView.extend({
     },
 
     render: function () {
+      // debugger
       var content = this.template({
         workspace: this.model
       });

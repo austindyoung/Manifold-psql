@@ -1,36 +1,3 @@
-// Manifold.Views.ProjectForm = Backbone.View.extend({
-//   template: JST['projects/form'],
-//
-//   events: {
-//     "click .btn btn-success": "addProject"
-//   },
-//
-//   addProject: function (event) {
-//     event.preventDefault();
-//     var attrs = this.$el.serializeJSON();
-//
-//     var self = this;
-//     this.model.set(attrs);
-//     this.model.save({}, {
-//       success: function () {
-//         self.collection.unshift(that.model, {merge: true});
-//         self.model = new Manifold.Models.Project();
-//       }
-//     });
-//   }
-//   // ,
-//   // create: function (event) {
-//   //   event.preventDefault();
-//   //   this.collection.create({
-//   //     board_id: this.collection.board.id,
-//   //     ord: this.collection.length,
-//   //     title: this.$('textarea').val()
-//   //   }, { wait: true });
-//   //   this.$('textarea').val('');
-//   //   this.$('textarea').focus();
-//   // }
-// });
-
 Manifold.Views.ProjectForm = Backbone.View.extend({
   events: {
     'submit form': 'submit'

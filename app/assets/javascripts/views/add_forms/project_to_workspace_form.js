@@ -3,7 +3,8 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
     // 'click .workspace-item': 'addToWorkspace'
   },
 
-  className: "dropdown-menu workspaces-menu",
+  // className: "dropdown-menu workspaces-menu",
+  className: "workspaces-menu dropdown-menu",
 
   tagName: "ul",
 
@@ -21,10 +22,10 @@ Manifold.Views.ProjectToWorkspaceForm = Backbone.View.extend({
       //
     });
     this.$el.html(renderedContent);
-    var headerItem = $("<li> + to ws</li>");
-    headerItem.addClass("list-header");
-    headerItem.addClass("header-item");
-    this.$el.prepend(headerItem);
+    // var headerItem = $("<li> + to ws</li>");
+    // headerItem.addClass("list-header");
+    // headerItem.addClass("header-item");
+    // this.$el.prepend(headerItem);
     return this;
   },
   //

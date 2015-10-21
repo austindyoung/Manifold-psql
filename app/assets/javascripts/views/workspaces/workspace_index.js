@@ -10,7 +10,6 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
   },
 
   navToWorkspace: function (event) {
-    // debugger;
     var id = $(event.target).data().id;
     Backbone.history.navigate("#/workspaces/" + id, {trigger: true});
   },
@@ -20,7 +19,6 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
     this.renderWorkspaceForm();
     this.listenTo(this.collection, 'add', this.addWorkspace);
     this.renderWorkspaces();
-
   },
 
   renderWorkspaceModal: function () {
@@ -35,6 +33,7 @@ Manifold.Views.WorkspacesIndex = Backbone.CompositeView.extend({
   },
 
   addWorkspace: function (workspace) {
+    // debugger
     var view = new Manifold.Views.WorkspaceIndexItem({
       model: workspace
     });

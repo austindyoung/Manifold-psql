@@ -3,8 +3,21 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
 
     events: {
       "click .project-heading": "renderProject",
-      "click .project-to-ws": "renderProjectSearchModal",
-      "click .edit-task": "log"
+      "click .add-button-projects": "renderProjectSearchModal",
+      "click .edit-task": "log",
+      "mouseover .user": "displayUserInfo",
+      "change .user": "removerUserInfo"
+    },
+
+    displayUserInfo: function (event) {
+      $target = $(event.target);
+      var attrs = $target.val()
+      $(".user-info").text(attrs.fname + " " + attrs.mname + " " + attrs.lname + "     " + attrs.email);
+    },
+
+    removeUserInfo: function (event) {
+      $(".user-info").text("");
+      console.log("out");
     },
 
     log: function () {
@@ -54,13 +67,14 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
       });
       this.$el.html(content);
       this.attachSubviews();
-      // this.renderProjects();
 
       this.$('#projects-sidebar');
-      // remove sortable
-      this.$('#members');
-      // remove sortable
 
+      this.$('#members');
+
+      var $addButton = $('<div>+</div>')
+      $addButton.addClass('add-button-projects');
+      $('#content-sidebar').append($addButton);
       return this;
     },
 
@@ -76,7 +90,8 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
         model: project,
         workspace: this.model,
         collection: this.workspaces,
-        users: this.users
+        users: this.users,
+        in_org: false
       });
       this.addSubview("#project", projectView)
     },
@@ -97,23 +112,9 @@ Manifold.Views.WorkspaceShow = Backbone.CompositeView.extend({
 
     renderProjects: function () {
       this.model.projects().each(this.addProject.bind(this));
-
     },
 
     renderMembers: function () {
       this.model.members().each(this.addMember.bind(this));
     },
-
-    // renderTasks: function () {
-    //
-    // }
-
-    // renderProjectForm: function () {
-    //   var view = new Manifold.Views.ProjectForm({
-    //     collection: this.collection,
-    //     model: new Manifold.Models.Project(),
-    //     parentDiv: this.model
-    //   });
-    //   this.addSubview('#project-form', view);
-    // }
 });

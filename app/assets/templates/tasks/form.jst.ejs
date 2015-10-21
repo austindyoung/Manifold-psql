@@ -5,7 +5,7 @@
 
 <div class="m-content task">
 <div class="form-group">
-  <form>
+  <form class="task-form">
     <ul class="errors">
     </ul>
     <input
@@ -16,41 +16,15 @@
       value="<%= task.escape("title") %>"
     >
 
-    <!-- <input
-    class="form-control"
-    placeholder="Description"
-    name="description"
-    value="<%= task.escape("description") %>"
-    > -->
 
     <textarea class="form-control" placeholder="Description" aria-describedby="sizing-addon1"
     name="description" value="<%= task.escape("description") %>">
     </textarea>
-    <!-- <input
-      class="form-control assignee"
-      placeholder="Assignee"
-      type="text"
-      name="assignee"
-      value=""
-    > -->
-    <div class="input-group">
-      <input type="text" name="assignee" class="form-control assignee" placeholder="Assignee" aria-describedby="basic-addon1">
-      <span class="btn input-group-addon" id="assignee-stager">+</span>
-    </div>
 
-    <input
-      id="assignee_id_buffer"
-      type="hidden"
-    >
-
-    <input
-      id="assignee_ids"
-      type="hidden"
-      name="assignee_ids"
-      value="[]"
-    >
-
+    <div class="stage"></div>
     <div id="assignees-stage"></div>
+
+
     <input
       class="form-control"
       placeholder="Due Date"
@@ -58,10 +32,6 @@
       name="due_date"
     >
 
-    <!-- members.filter_auto_complete(n,fragment)[0].names(n) -->
-    <!-- <ul> -->
-      <!-- <li>1</li> -->
-    <!-- </ul> -->
     <input type="submit" value="+" class="btn btn-default task-main-form">
   </form>
 </div>

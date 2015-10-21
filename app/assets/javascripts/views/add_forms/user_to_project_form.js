@@ -1,7 +1,7 @@
 Manifold.Views.UserToProjectForm = Backbone.View.extend({
   events: {
     'submit form': 'renderSelectUserModal',
-    "input input[type=text]": 'attachResults',
+    'input input[type=text]': 'attachResults',
     'click .user-result': 'addUser',
     'click .m-background': 'removeForm'
   },
@@ -17,7 +17,6 @@ Manifold.Views.UserToProjectForm = Backbone.View.extend({
   },
 
   addUser: function (event) {
-    debugger;
     var selected_user_id = $(event.target).data().id;
     var project_id = this.model.id;
     this.model = new Manifold.Models.TeamMembership({

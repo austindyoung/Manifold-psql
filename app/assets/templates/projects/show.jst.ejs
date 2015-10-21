@@ -2,9 +2,7 @@
 
 </div>
 
-
-
-<nav class="navbar navbar-default project">
+<nav class="my-nav project">
   <div class="container-fluid">
     <div class="navbar-header project">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -13,52 +11,45 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"><%=project.attributes.title%></a>
+      <a class="navbar-brand cont"><%=project.attributes.title%></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      <ul class="nav navbar-nav">
+       <li id="add-dropdown" class="dropdown">
 
+         <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+           +
+         </button>
+
+         <ul class="dropdown-menu multi-level" aria-labelledby="dropdownMenu1">
+           <% if(member_of_project) { %>
+           <li class="add-user"><a>user</a></li>
+           <%}%>
+           <li class="dropdown-submenu"><a>to workspace</a>
+           </li>
+         </ul>
+
+       </li>
        <li><a><div id="team-members" class="btn-group" role="group" aria-label="...">
 
        </div></a></li>
 
-      <li><div class="btn-toolbar" role="toolbar">
-        <div class="btn-group project-toolbar" role="group">
-          <div class="btn-group dropdown workspaces-dropdown">
-            <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              <span class="glyphicon glyphicon-menu-down"></span>
-            </button>
 
-          </div>
-
-        <button type="button" class="add-user btn btn-default btn-xs">
-          +
-          <!-- <span class="glyphicon glyphicon-plus"><span> -->
-        </button>
-
-        <button type="button" class="delete-project btn btn-default btn-xs">
-          -
-          <!-- <span class="glyphicon glyphicon-plus"><span> -->
-        </button>
-
-
-        </div>
-      </div>
-    </li>
-    <li><a href="<%="#/organizations/" + project.attributes.organization_id%>">
+    <li>
+  </li>
+  <% if(!in_org) {%>
+    <li id="organization-ref"><a href="<%="#/organizations/" + project.attributes.organization_id%>">
       <%=project.attributes.organization.title%>
     </a></li>
+    <%}%>
   </ul>
   </div>
 </div>
 </nav>
-<div >
+
+<div id="project-body">
   <div class="project-tasks">
   <h4>Tasks</h4>
-  <button type="button" class="add-task btn btn-default btn-xs">
-    +
-    <!-- <span class="glyphicon glyphicon-plus"><span> -->
-  </button>
 
     <ul id="tasks">
 

@@ -108,15 +108,19 @@ Manifold.Routers.Router = Backbone.Router.extend({
   organizationShow: function (id) {
     // todo: fetch a new model
     var organization = new Manifold.Models.Organization({id: id})
-    organization.fetch();
-    var view = new Manifold.Views.OrganizationShow({
-      model: organization,
-      collection: organization.projects(),
-      users: this.users
-    });
-
-    this._swapView(view);
-    this.renderOrganizations();
+    organization.fetch({
+      success: function (model) {
+        this.workspaces.fetch();
+        var view = new Manifold.Views.OrganizationShow({
+          model: model,
+          collection: model.projects(),
+          users: this.users,
+          workspaces: this.workspaces
+        });
+        this._swapView(view);
+        this.renderOrganizations();
+    }.bind(this)
+  });
   },
 
   organizationSearch: function (fragment) {

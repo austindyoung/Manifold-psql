@@ -339,13 +339,32 @@ WorkspaceProjectMembership.create!([
   {project_id: 15, workspace_id: 4}
 ])
 
+TeamMembership.create!([
+  {project_id: 6, member_id: 1},
+  {project_id: 10, member_id: 1},
+  {project_id: 8, member_id: 1},
+  {project_id: 2, member_id: 1},
 
-projs = [6, 10, 8, 2, 3, 13]
+  {project_id: 8, member_id: 1},
+
+  {project_id: 3, member_id: 1},
+
+  {project_id: 13, member_id: 1},
+
+  {project_id: 3, member_id: 1},
+
+  {project_id: 14, member_id: 1},
+  {project_id: 15, member_id: 1}
+])
+
+
+projs = [[6,6], [10, 4], [8,7], [2,2], [3,3], [13,2]]
 projs.each do |proj|
   people = User.all[1..-1]
   9.times do
     member_id = people.sample.id
-    TeamMembership.create!(member_id: member_id, project_id: proj)
+    TeamMembership.create!(member_id: member_id, project_id: proj[0])
+    OrganizationMembership.create!(member_id: member_id, organization_id: proj[1])
     people.reject {|mem| mem.id == member_id}
   end
 
